@@ -1,0 +1,2765 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+	<meta http-equiv="CONTENT-TYPE" content="text/html; charset=ISO-8859-1">
+	<title>TLF - a console mode general purpose CW keyer, -logging and -contest program for hamradio</title>
+	<meta name="GENERATOR" content="OpenOffice.org 1.1.0  (Linux)">
+	<meta name="CREATED" content="20031116;12305100">
+	<meta name="CHANGED" content="20031116;15224400">
+	<style>
+	<!--
+		@page { size: 8.5in 11in; margin-left: 0.79in; margin-right: 0.42in; margin-top: 0.42in; margin-bottom: 0.42in }
+	-->
+	</style>
+</head><body dir="LTR" bgcolor="#ffffff" lang="en-US">
+<h1 align="CENTER"><b>TLF-0.9.9 </b>
+</h1>
+<p align="CENTER">&nbsp; 
+</p>
+<h3 align="CENTER">(C) 2001, 2002, 2003 - Rein Couperus, PA0RCT</h3>
+<p style="margin-bottom: 0in;" align="CENTER">a free console mode
+general purpose CW keyer, voice keyer,</p>
+<p style="margin-bottom: 0in;" align="CENTER">logging and contest
+program for hamradio 
+</p>
+<p style="margin-bottom: 0in;" align="CENTER">under LINUX</p>
+<p><br><br>
+</p>
+<h3 align="CENTER"><i>This program is published under GPL</i></h3>
+<p style="margin-bottom: 0in;"><br>
+</p>
+<p style="margin-bottom: 0in;" align="CENTER"><img src="tlfdoc_files/TLF.png" name="Graphic1" align="BOTTOM" border="0" height="356" width="572"></p>
+<p><br><br>
+</p>
+<p><br><br>
+</p>
+<p><br><table dir="LTR" align="LEFT" bgcolor="#fbffb5" cellpadding="2" cellspacing="2" width="800">
+	<tbody><tr>
+		<td width="290">
+			<h2><a name="content"></a>Content</h2>
+			<ul>
+				<p style="margin-bottom: 0in;"><a href="#Description">Program
+				description</a><br><a href="#Why">Why
+				TLF?</a><br><a href="#Features">Features</a><br><a href="#Installation">Installation</a><br><a href="#Prepare">Preparations
+				before running TLF</a><br><a href="#Files">Files</a><br><a href="#Operation">Operation</a></p>
+				<ul>
+					<li><p style="margin-bottom: 0in;"><a href="#CT">CT compatibility</a></p>
+					</li><li><p style="margin-bottom: 0in;"><a href="#logging">Loggging
+					qso's</a></p>
+					</li><li><p style="margin-bottom: 0in;"><a href="#deleting">Deleting
+					qso's</a></p>
+					</li><li><p style="margin-bottom: 0in;"><a href="#editing">Editing
+					previous qso</a></p>
+					</li><li><p style="margin-bottom: 0in;"><a href="#rst">Changing RST</a></p>
+					</li><li><p style="margin-bottom: 0in;"><a href="#mode">Changing mode</a></p>
+					</li><li><p style="margin-bottom: 0in;"><a href="#band">Changing bands</a></p>
+					</li><li><p style="margin-bottom: 0in;"><a href="#contest">Contest
+					commands</a></p>
+					</li><li><p style="margin-bottom: 0in;"><a href="#keyer">Keyer
+					commands</a></p>
+					</li><li><p style="margin-bottom: 0in;"><a href="#radio">Radio control</a></p>
+					</li><li><p style="margin-bottom: 0in;"><a href="#log">Log commands</a></p>
+					</li><li><p style="margin-bottom: 0in;"><a href="#time">Changing time
+					and zone</a></p>
+					</li><li><p style="margin-bottom: 0in;"><a href="#score">Score window</a></p>
+					</li><li><p style="margin-bottom: 0in;"><a href="#message">Setting up
+					messages</a></p>
+					</li><li><p style="margin-bottom: 0in;"><a href="#dupe">Dupe check</a></p>
+					</li><li><p style="margin-bottom: 0in;"><a href="#partials">check
+					partials / auto_complete</a> 
+					</p>
+					</li><li><p style="margin-bottom: 0in;"><a href="#propagation">Checking
+					propagation</a></p>
+					</li><li><p style="margin-bottom: 0in;"><a href="#cluster">DX cluster
+					connection</a></p>
+					</li><li><p style="margin-bottom: 0in;"><a href="#lan"><b>IP
+					Networking for M/S and M/M operation</b></a></p>
+					</li><li><p style="margin-bottom: 0in;"><a href="#paras">Editing the
+					.paras file</a></p>
+					</li><li><p style="margin-bottom: 0in;"><a href="#simulator">CW
+					contest simulator</a></p>
+					</li><li><p style="margin-bottom: 0in;"><a href="#Logcfg"><b>logcfg.dat</b></a></p>
+					</li><li><p style="margin-bottom: 0in;"><a href="#Other"><b>Program
+					your own contest...</b></a></p>
+				</li></ul>
+				<p><a href="#Commands">TLF Commands </a><br><a href="#Options">TLF
+				options</a></p>
+			</ul>
+		</td>
+		<td width="342">
+			<p>.<img src="tlfdoc_files/xplanet.png" name="Graphic2" align="BOTTOM" border="0" height="326" width="308"></p>
+		</td>
+	</tr>
+</tbody></table><br><br>
+</p>
+<h1><br><br>
+</h1>
+<h1>Description</h1>
+<p><b>TLF-0.9.9</b> is a console (ncurses) mode general purpose CW
+keyer, -logging and -contestprogram for hamradio. It supports the
+<b>CQWW</b>, the <b>WPX</b>, the <b>ARRL-DX</b> , the <b>ARRL-FD</b>,the
+<b>PACC</b> and the <b>EU SPRINT</b> contests (single operator)as
+well as a lot more basic contests, <b>general QSO</b> and <b>DXpedition</b>
+mode. It interfaces with a <b>morse code generator</b>, a number of
+<b>radios</b>, and with a <b>DX Cluster</b>. Tlf can project cluster
+data into the excellent <strong>Xplanet</strong> program, written by
+<strong>Hari Nair</strong>.<br>Contest operation mimics the popular
+<b>TR-Log</b> program for DOS, the output file is TR- as well as
+<b>CABRILLO</b> compatible. The program was written for console mode
+on purpose, to make it run also on smaller machines, or remotely via
+a modem link. TLF is developed under <b>SuSE 9.0</b>, and tested
+under <b>SuSE 8.0, kernel version 2.4.1. Beta testers welcome !!!</b>
+<br><br>There is now also a two-floppy version in development called
+<strong>debianham</strong>. That version is maintained by the Debian
+community, and contains a Linux mini-distribution and a copy of tlf
+(version 0.8.19). <br><br>. The <b>cwdaemon-0.7 is fully supported</b>,
+featuring <b>direct mode</b> for the keyboard and output to parallel
+and serial ports and speed and weight control from the keyboard.<br>Two
+more keyer modules are supported. The cwkeyer from Ivo, 9A3TY with
+output on either <b>ttyS0</b> or <b>ttyS1</b>,and the (more flexible)
+cwkeyer for the parallel port from Eric, PA3FKN with output on <b>LP0</b>.
+They both work with a cw output device called <b>/dev/cwkeyer</b>,and
+can be fully controlled by TLF. <br><br>As the <b>cwdaemon</b> is now
+more flexible than the other modules, and easier to maintain (it runs
+in user mode rather than as a kernel module) focus of the development
+is on the cwdaemon.<br><br><b>Tlf works with Hamlib-1.1.4.</b>, you
+find it at Sourceforge.com.</p>
+<p>Tlf provides <b>full ip networking between tlf nodes</b>,
+syncing/distributing log, packet data, frequency data,local talk,
+serial numbers, time sync etc...</p>
+<p><!--</TABLE>--><a href="#content"><strong><font color="#b31fff">Back
+to contents</font></strong> </a>
+</p>
+<h1><a name="Why"></a>Why TLF</h1>
+<p style="margin-bottom: 0in;">I have been using mostly TR-Log for
+contesting, or CT when working as guest op in M/S operations. I am
+especially fond of TR-Log. <b>When you have a DOS computer, you don't
+need TLF. You should use TR-log.</b>However, I have now removed all
+WINDOWS and DOS software from my computers and put <b>LINUX</b>
+on.This means I can't use my favourite contesting software anymore
+(yes, I have also experimented with DOSEMU, but without great
+success...)<br><br><b>TLF</b> started as a simple keyboard interface
+to <b>cwkeyer-0.1</b> from 9A3TY. When the WPX 2001was 2 months away
+I had to try to write my own program. That turned out to be great
+fun. The result of this is TLF,which very much represents my idea of
+what a CW contest program should do. <br><br>Some have asked what the
+name stands for. The old hands from the days when CW was still
+hand-crafted willcertainly know. It means <b><i>Try Left Foot</i></b>.<br>On
+special request TLF will now also log SSB and DIGIMODE qso's.<br><br><a href="#content"><strong><font color="#b31fff">Back
+to contents</font></strong> </a>
+</p>
+<p style="margin-bottom: 0in;"><br>
+</p>
+<p style="margin-bottom: 0in;"><br>
+</p>
+<p style="margin-bottom: 0in;"><a name="Features"></a><br>
+</p>
+<table cellpadding="2" cellspacing="2" width="600">
+	<tbody><tr>
+		<td>
+			<h1>Features</h1>
+		</td>
+	</tr>
+</tbody></table>
+<table cellpadding="2" cellspacing="2" width="600">
+	<tbody><tr>
+		<td>
+			<p><b>Permanent information displays:</b> 
+			</p>
+		</td>
+		<td valign="TOP"></td>
+	</tr>
+	<tr>
+		<td bgcolor="#f8ffb6" width="300">
+			<ul>
+				<li><p style="margin-bottom: 0in;">Keyer output, 
+				</p>
+				</li><li><p style="margin-bottom: 0in;">last 5 log lines, 
+				</p>
+				</li><li><p style="margin-bottom: 0in;">UTC time, 
+				</p>
+				</li><li><p style="margin-bottom: 0in;">keyer speed, delay, 
+				</p>
+				</li><li><p>keyer status 
+				</p>
+			</li></ul>
+		</td>
+		<td bgcolor="#f8ffb6" width="300">
+			<ul>
+				<li><p style="margin-bottom: 0in;">(Keyboard|CQ|S&amp;P|Auto), 
+				</p>
+				</li><li><p style="margin-bottom: 0in;">DX database output for active
+				call, 
+				</p>
+				</li><li><p>or WWV data if available via packet.</p>
+			</li></ul>
+			<p><br>
+			</p>
+		</td>
+	</tr>
+</tbody></table>
+<p><br><b>Optional information windows:</b></p>
+<table cellpadding="2" cellspacing="2">
+	<tbody><tr>
+		<td bgcolor="#f8ffb6" width="300">
+			<ul>
+				<li><p style="margin-bottom: 0in;"><b>Dupe</b> check, 
+				</p>
+				</li><li><p style="margin-bottom: 0in;"><b>score</b>, 
+				</p>
+				</li><li><p style="margin-bottom: 0in;">raw <b>cluster</b> output | DX
+				spots only | Band Map, 
+				</p>
+				</li><li><p style="margin-bottom: 0in;"><b>Check partial call</b> with
+				a database of some 28.000 known contest calls,</p>
+				</li><li><p style="margin-bottom: 0in;"><b>Zones</b> worked,</p>
+				</li><li><p><b>Countries</b> worked</p>
+			</li></ul>
+		</td>
+		<td bgcolor="#f8ffb6" width="300">
+			<ul>
+				<li><p style="margin-bottom: 0in;"><b>Propagation diagrams</b>
+				based on: 
+				</p>
+				<ul>
+					<li><p style="margin-bottom: 0in;">sun spots, 
+					</p>
+					</li><li><p style="margin-bottom: 0in;"><b>qrb</b>, 
+					</p>
+					</li><li><p style="margin-bottom: 0in;">B&gt;sunup, 
+					</p>
+					</li><li><p style="margin-bottom: 0in;"><b>sundown</b>, 
+					</p>
+					</li><li><p></p>
+				</li></ul>
+				<p>qtr, etc. 
+				</p>
+			</li></ul>
+			<p><br>
+			</p>
+		</td>
+	</tr>
+</tbody></table>
+<p style="margin-bottom: 0in;"><b>Keyer:</b></p>
+<table cellpadding="2" cellspacing="2" width="600">
+	<tbody><tr>
+		<td width="300">
+			<p><img src="tlfdoc_files/keyer1.png" name="Graphic3" align="BOTTOM" border="0" height="106" width="193"></p>
+		</td>
+		<td width="300">
+			<p><img src="tlfdoc_files/keyer2.png" name="Graphic4" align="BOTTOM" border="0" height="106" width="222">
+						</p>
+		</td>
+	</tr>
+</tbody></table>
+<p><br><br>
+</p>
+<ul>
+	<li><p style="margin-bottom: 0in;">6 - 60 wpm,</p>
+	</li><li><p style="margin-bottom: 0in;">24 CW messages programmable online
+	(you will not remember more anyway..)</p>
+	</li><li><p style="margin-bottom: 0in;">Auto-CQ with adjustable delay</p>
+	</li><li><p style="margin-bottom: 0in;">Output to the TX on <b>/dev/ttyS0</b>
+	or <b>/dev/ttyS1</b> or <b>/dev/lp0 or /dev/lp1 </b>via the
+	networked cwdaemon-0.7</p>
+	</li><li><p style="margin-bottom: 0in;">Sidetone is adjustable (and
+	optional).</p>
+	</li><li><p>Weight adjustable 
+	</p>
+	</li><li><p>Band info output on lp0</p>
+</li></ul>
+<p><br><b>Database:</b><br><br><img src="tlfdoc_files/db.png" name="Graphic5" align="BOTTOM" border="0" height="13" width="559">
+<br>Uses standard cty.dat.<br><br><b>Interfaces:</b><br><br><b>TLF</b>
+interfaces to the keyers through ip networking <strong>(cwdaemon)</strong>,
+Both for output on the parallel port and the serial port.<br>Interface
+to the radios has been kept modular, since tlf-0.7.0 the hamlib
+library is supported, which enables control of various popular rigs. 
+</p>
+<p>Tlf is now fully <a href="#lan"><b>networked</b></a>, with an
+extremely simple setup procedure... You have to see it to believe
+it..!</p>
+<h3><br><br>
+</h3>
+<h3><br><br>
+</h3>
+<h3><br><br>
+</h3>
+<h3><b>HW Interface to the trx: Parallel port circuit</b></h3>
+<p><img src="tlfdoc_files/parallelport_circuit.jpg" name="Graphic6" align="BOTTOM" border="0" height="619" width="675">
+</p>
+<h3><b>HW Interface to the trx: Serial port circuit</b></h3>
+<p><img src="tlfdoc_files/serialport_circuit.jpg" name="Graphic7" align="BOTTOM" border="0" height="374" width="737">
+</p>
+<h1><a name="Installation"></a>Installation</h1>
+<h3><i>Install the CW driver</i></h3>
+<p><br>Download cwdemon-0.7.tar.gz and untar it.<br><br>To install
+the daemon, do (as root):<br><br>1: ./configure<br>2: make<br>3: make
+install <br><br>The program is installed in /usr/sbin, and can be
+started (as root) with cwdaemon (or cwdaemon -n).<br><br>The default
+output port is /dev/lp0. Be sure to unload the lp module first (rmmod
+lp).See the provided README for more details.<br>The manual page will
+tell you some more about startup options, you could also type
+cwdaemon -h.</p>
+<p><strong>Testing cwdaemon</strong><br>Install the netcat package
+and type: 'nc -u localhost 6789'.<br>Any character typed on the
+command line will be sent to cwdaemon after you hit enter. You could
+also use the following shell script which is character based:</p>
+<pre>*******************************************
+#!/bin/sh
+
+old_tty_settings=$(stty -g)
+stty -icanon
+trap 'stty "$old_tty_settings"; exit 0' INT
+
+echo "Press (CTRL-C) to interrupt..."
+
+while true; do
+Keypress=$(head -c1)
+echo $Keypress | nc -q0 -u localhost 6789
+done
+*******************************************</pre><p>
+This only works if your version of netcat supports the -q switch. If
+you don't have it, you also could try: echo $Keypress &gt;
+/dev/udp/localhost/6789 
+</p>
+<h3><i><b>Install the Hamlib library</b></i></h3>
+<p>- Get the Hamlib 1.1.4 library<br>- Unzip and untar the archive <br>-
+Go into the top directory<br>- As <b>root</b>, do ./configure, make,
+and make install.<br>- Add /usr/local/lib to /etc/ld.so.conf and run
+ldconfig (as root). 
+</p>
+<h3><i><b>Install the TLF program.</b></i></h3>
+<p>Get the latest distribution of tlf from the download site
+(http://savannah.nongnu.org/download/tlf).<br>Tlf now supports GNU
+autoconf and automake, which automates the installation process, and
+makes sure you haveall the goodies on your machine which tlf
+needs..<br><br>You have to be root to install tlf.<br>* Read
+./doc/README and INSTALL <br>* Untar the archive (e.g. tar zxvf
+tlf-0.9.9.tar.gz) <br>* cd into the top directory (cd tlf-0.9.9) <br>*
+type ./configure (if you want to use hamlib, type ./configure
+--enable-hamlib,<u> install hamlib first...</u>)<br>* type make <br>*
+type make install 
+</p>
+<p><font size="4"><b>Directory structure</b></font></p>
+<p>It is good practise to use separate directories for the different
+contests. <br>TLF can be started from any directory. to start a
+specific contest you need to: 
+</p>
+<ul>
+	<li><p style="margin-bottom: 0in;">mkdir <i>contestname </i>
+	</p>
+	</li><li><p style="margin-bottom: 0in;"><strong>copy a logcfg.dat file
+	into it </strong>
+	</p>
+	</li><li><p style="margin-bottom: 0in;">edit the <b>logcfg.dat</b> file
+	(call, logfile,) to suit your needs 
+	</p>
+	</li><li><p style="margin-bottom: 0in;">edit the <b>rules file</b> for the
+	relevant contest ( mults, points)</p>
+	</li><li><p style="margin-bottom: 0in;"><strong>start tlf with <i>tlf</i></strong>.
+	Normally startup messages are suppressed to enable a quick restart
+	of the program.</p>
+	</li><li><p style="margin-bottom: 0in;">If you start tlf for the first
+	time in a directory you will get messages from the services which
+	are started. If you want that later on (for debugging purposes)
+	start tlf with <strong><em>tlf -v</em></strong>. 
+	</p>
+	</li><li><p>If you want to know which version you are running start with<strong><em>
+	tlf -V</em></strong>.</p>
+	</li><li><p>If you want help, start tlf with tlf -h</p>
+</li></ul>
+<p>Example:</p>
+<p><font face="Nimbus Roman No9 L"><font size="3">E.g. For the
+cqww2003ssb I made the following structure:</font></font></p>
+<p><font face="Nimbus Roman No9 L"><font size="3">~/tlf/contest/cqww2003ssb/
+(the working directory tlf is started from...)</font></font></p>
+<p><font face="Nimbus Roman No9 L"><font size="3">~/tlf/contest/cqww2003ssb/logcfg.dat</font></font></p>
+<p><font face="Nimbus Roman No9 L"><font size="3">~/tlf/contest/cqww2003ssb/cqww2003ssb.log</font></font></p>
+<p><font face="Nimbus Roman No9 L"><font size="3">~/tlf/contest/cqww2003ssb/rules/cqww</font></font></p>
+<p><font face="Nimbus Roman No9 L"><font size="3">The general commands
+to configure tlf are in logcfg.dat; the contest specific parameters
+are in ./rules/cqww.</font></font></p>
+<p><font face="Nimbus Roman No9 L"><font size="3">There are examples in
+the /usr/local/share/tlf and /usr/local/share/tlf/rules directories.
+You can use these as templates and edit your call etc...</font></font></p>
+<p><font face="Nimbus Roman No9 L"><font size="3">With tlf-0.9.9 it is
+now possible to start tlf with different logcfg.dat files for each
+operator. If you sgtart tlf e.g. With tlf -fPA0R you get the
+logcfg.dat file for PA0R.</font></font></p>
+<p><font face="Nimbus Roman No9 L">The cty.dat and mastercalls file
+sit in /usr/local/share/tlf, and they are read from there. You may
+want to add information to them before the contest. Leave them in
+place so tlf can find them !! You normally need root privileges for
+editing in /usr/local/share...<br>The cty.dat file included in the
+distribution of tlf-0.9.9 is the one from October 2003.<br></font><br><a href="#content"><strong><font color="#b31fff">Back
+to contents</font></strong> </a><br><br><br>
+</p>
+<h1><b>Preparation</b></h1>
+<ol>
+	<p>Make sure the cwdaemon runs (start as root)before starting tlf if
+	you want to use the keyer or the voice keyer....<br><br><br>
+	</p>
+	<li><p>Start the program (<b>tlf</b>).</p>
+</li></ol>
+<p><a name="Files"></a><img src="tlfdoc_files/prstart.png" name="Graphic8" align="BOTTOM" border="0" height="375" width="571"></p>
+<h2><b>FILES</b></h2>
+<table bgcolor="#8fffb6" border="1" cellpadding="2" cellspacing="4" width="823">
+	<col width="219">
+	<col width="582">
+	<tbody><tr>
+		<td width="219">
+			<p><i><b>. / clfile</b></i></p>
+		</td>
+		<td width="582">
+			<p>This is the input FIFO for the DX cluster monitor. You only
+			need it when you use a dx cluster, or any other information you
+			want the program to display, and if you cannot use ttyS0 or ttyS1
+			(e.g. you have only 1 serial port, which is used for rig ctrl).
+			<br>There are several ways to get the cluster data into it. <br>You
+			can use the <b>"call"</b> ax25 tool. .<br>You can get
+			the info into clfile by starting call with:</p>
+			<pre> call -r packetinterface | tee 
+tlfworkingdirectory/clfile</pre><p>
+			<br><br>You can also use telnet. Open a new terminal in the
+			working directory, and start telnet with: <br><tt><b>telnet <i>node</i>
+			| tee -a clfile</b></tt><br><br><b>TLF</b> will pick it up from
+			there (it will look in the working directory for clfile!!). <br><br><b>TLF
+			now also has its own comfortable telnet client and tnc terminal
+			!!</b>You have to set the proper parameters for this in the
+			logcfg.dat file.<br><br><br><b>Note:</b>When your tlf node wants
+			to receive packet date via the LAN, from another tlf node, the
+			FIFO must also be active.... For this purpose you must set
+			FIFO_INTERFACE in the logcfg.dat file! 
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td width="219">
+			<p><i><b>cty.dat</b></i></p>
+		</td>
+		<td width="582">
+			<p>This is the DXCC database. It resides in /usr/local/share/tlf.</p>
+		</td>
+	</tr>
+	<tr>
+		<td width="219">
+			<p><i><b>mastercalls</b></i></p>
+		</td>
+		<td width="582">
+			<p>This is the contest calls database. It resides in
+			/usr/local/share/tlf.</p>
+		</td>
+	</tr>
+	<tr>
+		<td width="219">
+			<p><i><b>. / .paras</b></i></p>
+		</td>
+		<td width="582">
+			<p>The parameter file. It remembers some parameters for the next
+			session. TLF will generate one for you. It is not necessary to
+			touch this, as all parameters are included in the file logcfg.dat,
+			which can be edited within tlf.</p>
+		</td>
+	</tr>
+	<tr>
+		<td width="219">
+			<p><b>. / logcfg.dat</b></p>
+			<p><b>or other_logcfg_file</b></p>
+			<p><b>(start with tlf -fother_log_file)</b></p>
+		</td>
+		<td width="582">
+			<p>The configuration file. It enables you to configure tlf for a
+			specific operator,for normal qso operation, etc. A template is
+			available in /usr/local/share/tlf. You should stick to the format
+			as much as possible. In case certain parameters are mutually
+			exclusive, the last one wins....<br>As more functions become
+			available in future, new versions of logcfg.dat will become
+			available. Lines starting with '#' are ignored. If there is no
+			logcfg.dat file in the working directory tlf will try to read the
+			one from /usr/local/share/tlf. Be sure to edit your call and the
+			log file name...</p>
+		</td>
+	</tr>
+	<tr>
+		<td width="219">
+			<p><b>. / rules/contestname</b></p>
+		</td>
+		<td width="582">
+			<p>The rules file. It enables you to configure tlf for a specific
+			contest, for normal qso operation, etc. A template is available in
+			/usr/local/share/tlf/rules. You should stick to the format as much
+			as possible. In case certain parameters are mutually exclusive,
+			the last one wins....<br>As more functions become available in
+			future, new rules templates will become available. Lines starting
+			with '#' are ignored. If there is no ./rules/contestname file in
+			the working directory tlf will try to read the one from
+			/usr/local/share/tlf/rules. 
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td width="219">
+			<p><b><i>xxxxxxxxxxxxxxx.log</i></b> 
+			</p>
+		</td>
+		<td width="582">
+			<p>The log file. You name it! 
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td width="219">
+			<p><i><b>. / cabrillo</b></i></p>
+		</td>
+		<td width="582">
+			<p>This file will be generated by the ":write" command
+			after the contest. Rename to YOURCALL.CBR and email....</p>
+		</td>
+	</tr>
+	<tr>
+		<td width="219">
+			<p><i><b>. / logname.adif</b></i></p>
+		</td>
+		<td width="582">
+			<p>This file will be generated by the ":adif" command
+			after the contest. This file format can be used to post the log to
+			LOTW or import in other loggers.</p>
+		</td>
+	</tr>
+</tbody></table>
+<p><br><br>
+</p>
+<p><a name="Operation"></a><a href="#content"><strong><font color="#b31fff">Back
+to contents</font></strong> </a>
+</p>
+<h1>Operation</h1>
+<p><br><br>
+</p>
+<p><span style="background: none repeat scroll 0% 0% rgb(255, 255, 0);">For the latest commands, keys
+and parameters for logcfg.dat and rules please read the README and
+the MAN-PAGE (man tlf), which are up to date...</span></p>
+<h2><a name="CT"></a><b>CT compatibility mode</b></h2>
+<p><br>CT compatibility has been added to tlf in order to make it
+easier for those who have been workingwith CT a lot as guest
+operators during M/S or M/M operations.<br>Two things have been added
+to tlf to accomplish this: 
+</p>
+<ul>
+	<li><p style="margin-bottom: 0in;">CT compatible synonyms for those
+	commands used most often in CT 
+	</p>
+	</li><li><p>Use of the ENTER, INSERT and + keys for logging qso's 
+	</p>
+</li></ul>
+<p>The CT compatible commands are active all the time, they are just
+aliases for existing tlf commands.<br><br>By setting the <b>CTCOMPATIBLE</b>
+parameter in logcfg.dat logging in tlf will behave like CT instaead
+of TR.This means that: 
+</p>
+<ul>
+	<li><p style="margin-bottom: 0in;">ENTER will log the qso 
+	</p>
+	</li><li><p style="margin-bottom: 0in;">Insert will send message F2 (to be
+	programmed as @ 5NN 'yourzone') 
+	</p>
+	</li><li><p>"+" will send F3 (QRZ message, e.g. TU 'yourcall')
+	and log the qso, instead of toggling between CQ mode and S&amp;P
+	mode (there is no S&amp;P mode in CT).</p>
+</li></ul>
+<p><a name="logging"></a>The log file of tlf is TR compatible, also
+in CT compatibility mode.</p>
+<p><a href="#content"><strong><font color="#b31fff">Back to contents</font></strong>
+</a>
+</p>
+<h2><b>Logging qso's</b></h2>
+<p><br><br>All activity takes place in the call input field (and the
+exchange input field..).<br>When you enter (part of) a call, several
+things happen:</p>
+<ul>
+	<li><p style="margin-bottom: 0in;">If check partials is on, and
+	<a href="#partials">auto_complete</a> is active, the call will be
+	automatically completed. E.g. when youtype PA0RC, it will
+	automatically complete to PA0RCT. The same for KC1X?, W3LP? etc.... 
+	</p>
+	</li><li><p style="margin-bottom: 0in;"><b>Backspace</b> will remove
+	character from the end of the call 
+	</p>
+	</li><li><p style="margin-bottom: 0in;"><b>ESCAPE</b> will remove the call
+	completely, and also erase the exchange field</p>
+	</li><li><p style="margin-bottom: 0in;"><b>left_arrow</b> will allow you
+	to edit the call in the input field (<b>enter edit mode</b>)</p>
+	</li><li><p style="margin-bottom: 0in;">Call edit now uses Insert mode as
+	default.</p>
+	</li><li><p style="margin-bottom: 0in;">In edit mode, ctrl-A will jump to
+	the beginning of the call, ctrl-E to the end.</p>
+	</li><li><p style="margin-bottom: 0in;">In edit mode, Backspace removes
+	the character before the cursor, Delete deletes the charactor under
+	the cursor.</p>
+	</li><li><p style="margin-bottom: 0in;">If after a Delete or an Insert you
+	leave edit mode with TAB, the auto_complete function is switched off
+	for the running qso.This enables you to change a call when it is
+	locked by <a href="#partials">auto_complete</a> because it is a
+	unique call in the database</p>
+	</li><li><p style="margin-bottom: 0in;">If after a Delete or an Insert you
+	leave edit mode with ESCAPE or ENTER, auto_complete is not switched
+	off.</p>
+	</li><li><p style="margin-bottom: 0in;">If the check window is on, it will
+	show the last qso's in the log (on the contest bands)</p>
+	</li><li><p style="margin-bottom: 0in;">The bottom status line will show
+	country and qrb info, as well as the local time of the station..</p>
+	</li><li><p style="margin-bottom: 0in;">When you press <b>Ctrl-p</b> you
+	will get a screen with the <b>muf</b> curve based on the number of
+	sunspots,the distance, bearing , sunset, sundown etc. Any key will
+	get you back to where you came from.</p>
+	</li><li><p style="margin-bottom: 0in;">You can go to the <b>exchange
+	field</b> with SPACE or TAB or <b>ENTER</b>.</p>
+	</li><li><p style="margin-bottom: 0in;">For the arrl_ss contest the
+	exchange input is intelligent, incl. call update in the exchange
+	field.E.g. in SS you can enter 23A 98OH and tlf knows what you mean.
+		</p>
+	</li><li><p style="margin-bottom: 0in;"><b>ENTER</b> will log the qso in
+	SSB mode, and also if you are in CW and qso (non-contest) mode.</p>
+	</li><li><p>In case you want to log a cw qso during a contest <b>without
+	cw</b> output, you can use <b>"\"</b> (backslash).</p>
+</li></ul>
+<p><a name="b4"></a><a href="#content"><strong><font color="#b31fff">Back
+to contents</font></strong> </a>
+</p>
+<h2>QSO B4 message</h2>
+<p style="margin-bottom: 0in;"><br>Tlf will automatically generate an
+qso b4 message in case you try to work a dupe. This message is taken
+from message F7. If you want to work the dupes anyway set <strong>NOB4</strong>
+in logcfg.dat !!<br><br><a href="#content"><strong><font color="#b31fff">Back
+to contents</font></strong> </a>
+</p>
+<hr>
+<h2><a name="deleting"></a>Deleting qso's</h2>
+<p style="margin-bottom: 0in;"><br>Using the <b>"-"</b> key
+will delete the last qso from the log (after asking your permission
+of course).</p>
+<hr>
+<p><a name="editing"></a><br><br>
+</p>
+<h2>Editing the 5 previous qso's</h2>
+<p><br>You can edit the 5 previous qso's with <b>"Up-arrow"</b>.
+This qso editor is using overwrite mode. Use the cursor keys
+tonavigate, and leave edit mode with enter, tab or escape. <br>You
+can use Insert and Delete. If you use "up-arrow" in the
+first line you go into <b>LOG VIEW</b> mode.<br>During edit mode LAN
+messages are kept in a buffer. You can edit anywhere in the log with
+the <b>:edit</b> command. 
+</p>
+<p>Edited qso's are NOT sent to other nodes in the network. But you
+can sync the logs with another node with the <b>:SYNC</b> command. 
+</p>
+<p><br><br>
+</p>
+<p>.<img src="tlfdoc_files/qsoedit.png" name="Graphic9" align="BOTTOM" border="0" height="356" width="572">
+</p>
+<p><br><a href="#content"><strong><font color="#b31fff">Back to
+contents</font></strong> </a>
+</p>
+<hr>
+<h2><a name="rst"></a><b>Changing RST</b></h2>
+<p style="margin-bottom: 0in;"><br>You can change <b>RST sent</b> when
+a Call is in the <b>Call Input Field</b>. <b>Page_down</b> will lower
+the S value and <b>Page_up </b>will increase it.<br><br><b>RST
+received</b> can be changed by going into the <b>exchange field</b>
+and using Page_down and Page_up accordingly.</p>
+<p style="margin-bottom: 0in;" align="CENTER">.<img src="tlfdoc_files/rst.png" name="Graphic10" align="BOTTOM" border="0" height="102" width="208">
+<br><br><br><a href="#content"><strong><font color="#b31fff">Back to
+contents</font></strong> </a>
+</p>
+<hr>
+<p><a name="mode"></a><br><br>
+</p>
+<h2><b>Changing CW/SSB mode</b></h2>
+<p>The commands are <b>:MODe, :CWMode, :SSBmode and :DIGimode</b> .</p>
+<hr>
+<p><a name="band"></a><br><br>
+</p>
+<h2><b>Changing Bands</b></h2>
+<p>When you are in the call input field, use the <b>left_arrow</b>
+and <b>right_arrow</b> keys to change the band, also with the Trlog
+commands <b>Alt-v</b> and <b>Alt-b</b>. You can switch off the arow
+keys by entering NO_BANDSWITCH_ARROWKEYS in the logcfg.dat file.<br>When
+contest mode is on, only the contest bands can be reached
+(160-80-40-20-15-10). 
+</p>
+<p><br><img src="tlfdoc_files/bands.png" name="Graphic11" align="BOTTOM" border="0" height="102" width="262">
+<br><br><br>
+</p>
+<p>For the <b>WARC bands</b> set CONTEST=qso and uncomment
+CONTEST_MODE in logcfg.dat<br><br>If a radio interface is present,
+band switching can be done in several ways:</p>
+<ul>
+	<li><p style="margin-bottom: 0in;">Switch bands on the radio - tlf
+	will follow 
+	</p>
+	</li><li><p style="margin-bottom: 0in;">Switch bands on tlf - the radio
+	will follow 
+	</p>
+	</li><li><p style="margin-bottom: 0in;">Enter a frequency in tlf - the
+	radio will jump to that qrg 
+	</p>
+	</li><li><p style="margin-bottom: 0in;">Pick a frequency from bandmap or
+	spot list - the radio will go there 
+	</p>
+	</li><li><p>If you have a frequency int the MEMory, press # - the radio
+	will go there</p>
+</li></ul>
+<p style="margin-bottom: 0in;"><a href="#content"><strong><font color="#b31fff">Back
+to contents</font></strong> </a>
+</p>
+<hr>
+<p><a name="contest"></a><br><br>
+</p>
+<h2><b>Contest commands</b></h2>
+<p>Some special commands are needed for use in a contest: 
+</p>
+<ul>
+	<li><p style="margin-bottom: 0in;">Switch between <b>Run </b>mode and
+	<b>S&amp;P</b> mode: <b>+</b>(CT mode has no S&amp;P)</p>
+	</li><li><p style="margin-bottom: 0in;">Confirm last <b>serial</b> nr: <b>"_"
+	(underscore)</b> 
+	</p>
+	</li><li><p style="margin-bottom: 0in;">Confirm last <b>call</b>: <b>"="</b>
+		</p>
+	</li><li><p style="margin-bottom: 0in;">Show list of <b>zones</b> yet to
+	be worked: <b>":zones"</b> 
+	</p>
+	</li><li><p style="margin-bottom: 0in;">Show list of <b>countries</b> left
+	over: <b>":cty"</b> 
+	</p>
+	</li><li><p style="margin-bottom: 0in;">Show <b>propagation</b>: <b>"ctrl-p"</b>
+		</p>
+	</li><li><p>Switch to <b>keyboard</b>: <b>","</b> or <b>"ctrl-k"</b>
+		</p>
+</li></ul>
+<p style="margin-bottom: 0in;"><a href="#content"><strong><font color="#b31fff">Back
+to contents</font></strong> </a>
+</p>
+<hr>
+<p><a name="keyer"></a><br><br>
+</p>
+<h2><b>Keyer commands</b></h2>
+<ul>
+	<li><p style="margin-bottom: 0in;">Change the <b>speed</b> with <b>Pg-up</b>
+	or <b>Pg-down</b>. You can see the speed in the upper status line
+	(S=45)</p>
+	</li><li><p style="margin-bottom: 0in;">Change the <b>weight</b> with
+	<b>Alt-w</b>, Values from -5 to +5, ENTER.</p>
+	</li><li><p style="margin-bottom: 0in;">Change the <b>auto_cq delay</b>
+	with Ctl-<b>page-up</b> and Ctl-<b>page-down</b>. This only works if
+	the call input field is empty. If it is not, you will change the RST
+	value. Set it to the <b>total length of the message + the receive
+	time.</b>! On some terminals the Ctrl-Pgup and Ctrl-Pgdown keys
+	don't work. You can also use the <b>:CQDelay</b> command. You can
+	see the value in te upper status line (D=11)</p>
+	</li><li><p style="margin-bottom: 0in;">Start the <b>auto_cq</b> with <b>F12</b>.
+	Or if contest mode is on, and input field is empty, with ENTER.</p>
+	</li><li><p style="margin-bottom: 0in;">Switch to <b>keyboard</b>: <b>","</b>
+	or <b>"ctrl-k"</b> The above commands also work when the
+	keyboard is on.</p>
+	</li><li><p style="margin-bottom: 0in;">Change the sidetone frequency with
+	<b>":tone"</b>. A value of 0 will switch sidetone off.</p>
+</li></ul>
+<p style="margin-bottom: 0in;"><br><a href="#content"><strong><font color="#b31fff">Back
+to contents</font></strong> </a>
+</p>
+<hr>
+<p><a name="radio"></a><br><br>
+</p>
+<h2><b>Radio control commands</b></h2>
+<p>The rig control works with Hamlib-1.1.4.</p>
+<p>The radio interface is switched on with the following commands in
+logcfg.dat:</p>
+<ul>
+	<li><p>RADIO_CONTROL #switch the interface on</p>
+	</li><li><p>RIGPORT=/dev/ttySx or /dev/USBx</p>
+</li></ul>
+<ul>
+	<li><p>You can use e.g. /dev/ttyS0, /dev/ttyUSB1, etc... anything
+	that looks like a tty. RPC rig daemon users should have
+	RIGMODEL=1901 and RIG­PORT=localhost. In this case RIGSPEED is
+	ignored.</p>
+	</li><li><p>RIGMODEL=351 (Hamlib index number of your rig, this is the
+	OMNI VI plus )</p>
+</li></ul>
+<ul>
+	<li><p>RIGSPEED=2400 (1200 - 56k tested )</p>
+	</li><li><p>RIT_CLEAR (resets rig after qso is logged (only if your radio
+	and Hamlib support it)</p>
+	</li><li><p>SHOW_FREQUENCY (shows large frequency display if score window
+	is off)<br><br><br>
+	</p>
+</li></ul>
+<p><br><img src="tlfdoc_files/radio.png" name="Graphic12" align="BOTTOM" border="0" height="156" width="249">
+</p>
+<ul>
+	<li><p>See your <b>trx frequency</b> on the right hand side of the
+	screen just below the log line. <br>E.g. <b>TRX: 10105.0</b></p>
+	</li><li><p style="margin-bottom: 0in;">Tlf will follow the bandswitch of
+	the trx. 
+	</p>
+	</li><li><p style="margin-bottom: 0in;"><b>Fast qsy</b> by just entering
+	the new qrg into the empty call input field in kHz (e.g. 3505).</p>
+	</li><li><p style="margin-bottom: 0in;"><b>Remember your run frequency</b>
+	by putting it into the memory with <b>"#"</b>. The memory
+	display will pop up and show the frequency you can return to by
+	again entering <b>"#"</b>.</p>
+	</li><li><p style="margin-bottom: 0in;"><b>Grab a dx spot.</b> <i>This
+	only works if you have a radio interface program for your type of
+	trx running</i>, and if you are connected to a cluster and have the
+	<b>bandmap</b> or <b>spot</b> windowon screen. Just enter part of
+	the call of the dx station (e.g. 6W when the call is 6W/DJ0LN/P),
+	enter <b>"ctrl-g"</b> (for "grab")and you will
+	see the trx magically qsy to the spot frequency, where you can loose
+	valuable time in thepileup. :-} 
+	</p>
+	</li><li><p style="margin-bottom: 0in;"><b>Add a spot to the list</b> by
+	entering a Call into the call field and pressing Ctrl-A. Thisworks
+	with band map as well as spot list.</p>
+	</li><li><p>If you set the RIT parameter (<b>:RIT</b>), the RIT will be
+	<b>reset</b> after a qso is logged.<i>This only works if your radio
+	supports the set_rit function!!! </i>
+	</p>
+	</li><li><p><img src="tlfdoc_files/rxfreq.png" name="Graphic13" align="BOTTOM" border="0" height="151" width="294"><br><br><b>Ctrl-f</b>
+	will give you a window in which you can change the TRX frequency in
+	100Hz steps (with up-arrow, down_arrow).Or left-arrow, right-arrow
+	(20 Hz)</p>
+</li></ul>
+<p>A Radio Control Interface is available for a growing number of
+rigs.<br>The development is done by the active Hamlib group. Info
+about rig compatibility is available on:
+<br><b>http://hamlib.sourceforge.net/</b></p>
+<p style="margin-bottom: 0in;"><a href="#content"><strong><font color="#b31fff">Back
+to contents</font></strong> </a>
+</p>
+<hr>
+<p><a name="log"></a><br><br>
+</p>
+<h2><b>Log commands</b></h2>
+<ul>
+	<li><p style="margin-bottom: 0in;"><b>Look at the log</b> with
+	<b>":view"</b>. It starts a new shell with LESS.<br>You
+	can also simply use <strong>up-arrow</strong> to move the cursor
+	upwards...</p>
+	</li><li><p style="margin-bottom: 0in;"><b>Edit the log</b> with <b>":edit"</b>.
+	It starts a new shell with JOE, VI or E3. Other editors on
+	request...</p>
+	</li><li><p>If that is not enough you can start an empty shell with <b>"!"</b>,
+	and <b>grep</b> the logfile, <b>copy</b> it, etc...</p>
+</li></ul>
+<p style="margin-bottom: 0in;"><a href="#content"><strong><font color="#b31fff">Back
+to contents</font></strong> </a>
+</p>
+<hr>
+<h2><a name="time"></a><b>Change your time zone and location</b></h2>
+<p>Set parameter TIME_OFFSET in logcfg.dat when your computer clock
+does not run on UTC. The parameter can have anyvalue between -23 and
+23. <br><br>Edit the cty.dat file, and put the data of your qth into
+the line representing your country. An example:</p>
+<pre style="margin-bottom: 0.2in;">United States:            05:  08:  NA:   43.00:    87.90:     5.0:  K:</pre><p style="margin-bottom: 0in;">
+If you are in zone 04, change the 05: into 04:, change the 43.00 and
+the 87.90 into your location. and the 5.0 (time difference to GMT) at
+the end to 6.0<br><br>This will enable tlf to show the DX time of a
+station you are working. <br>Tlf is picky with respect to the exact
+format of the file; make sure the stuff is in the right
+columns!<br><br>When there is a TIME_MASTER on the <b>network</b>,
+the tlf clock will be synchronized with the master. <br>To designate
+a station as a time master, just set TIME_MASTER in logcfg.dat.<br><br><a href="#content"><strong><font color="#b31fff">Back
+to contents</font></strong> </a>
+</p>
+<hr>
+<p><a name="score"></a><br><br>
+</p>
+<h2><b>The score window</b></h2>
+<p style="margin-bottom: 0in;"><br><img src="tlfdoc_files/bands.png" name="Graphic14" align="BOTTOM" border="0" height="102" width="262">
+<br><br>The score window is adapted to the contest you are in. So if
+the contest parameter is set to cqww, you geta special score window
+for it, showing qso's per band, countries worked per band, zones
+worked per band and total score.<br>It also gives an indication of
+the qso's per multiplier, and the qso rate based on the last 10
+qso's.<br>When you restart the program the score is <b>recalculated
+from the log file</b>. When a qso is <b>deleted</b> from the logfile
+the score is not adjusted, neither is the list of counties worked
+updated. You can correct this by using the <b>:REScore</b> command.
+With this operation the points are taken from the log, and the mults
+are recalculated! Through deletion of qso's and node down times the
+logs on separate nodes may differ after running for considerable
+time. This is normal, it happens also with CT and Trlog. Tlf can
+resync the log of a node on the fly by setting the
+SYNCFILE=&lt;user:password@host/dir/logfile&gt; parameter in
+logcfg.dat.</p>
+<p style="margin-bottom: 0in;">By issueing the :SYNC command the local
+log is merged with the log on the other node.</p>
+<p style="margin-bottom: 0in;">It is even possible to start a node
+mid-contest without a log, :SYNC will get the log from the master
+node.<br><br>At the bottom of the window you will see the <b>QSO's/MULT</b>
+display, and the <b>RATE</b> (qso's per hour, based on the last 10
+qso's) as soon as tlf has enough data to calculate it. The RATE
+display is rather coarse at the moment., as it is based on the time
+it took for the last 10 qso's....<br><br>The format of the display is
+dependent on the type of multiplier(s). I may be that for a certain
+combination of points and mults a display is not yet available, send
+your requirements to the mailing list (tlf-devel@nongnu.org). Well in
+advance of the contest you need it for !!</p>
+<p style="margin-bottom: 0in;"><br>
+</p>
+<p style="margin-bottom: 0in;"><a href="#content"><strong><font color="#b31fff">Back
+to contents</font></strong> </a>
+</p>
+<hr>
+<p><a name="message"></a><br><br>
+</p>
+<h2><br><br>
+</h2>
+<h2><b>The Messages</b></h2>
+<p>There are 24 messages. More than I can remember. Some have a
+special use:</p>
+<ul>
+	<li><p style="margin-bottom: 0in;">F1= <b>CQ call</b> (run mode) or
+	<b>DE CALL</b> (S&amp;P mode). The "DE" can be switched on
+	or off (<b>:demode</b>)</p>
+	</li><li><p style="margin-bottom: 0in;">F2 = free (normally "@ DE %"</p>
+	</li><li><p style="margin-bottom: 0in;">F3 = runmode <b>report</b> (e.g. <b>@
+	[ 14).</b> If <b>#</b> is used, the serial nr can be <b>SHORT</b>
+	(TT1)</p>
+	</li><li><p style="margin-bottom: 0in;">F4 = free (normally "73"
+	or "TU")</p>
+	</li><li><p style="margin-bottom: 0in;">F5 = free (normally "@"</p>
+	</li><li><p style="margin-bottom: 0in;">F6 = free (normally "%"</p>
+	</li><li><p style="margin-bottom: 0in;">F7 = free (normally "B4"</p>
+	</li><li><p style="margin-bottom: 0in;">F8 = free e.g. "AGN" 
+	</p>
+	</li><li><p style="margin-bottom: 0in;">F9 = free e.g. "?" 
+	</p>
+	</li><li><p style="margin-bottom: 0in;">F10 = free e.g. "QRZ?" 
+	</p>
+	</li><li><p style="margin-bottom: 0in;">F11 = free e.g. "UR CL?"
+		</p>
+	</li><li><p style="margin-bottom: 0in;">F12 = auto_cq message, e.g. "TEST
+	PA0RCT" 
+	</p>
+	</li><li><p style="margin-bottom: 0in;">S&amp;P TU msg = e.g. "TU
+	[14" 
+	</p>
+	</li><li><p style="margin-bottom: 0in;">Run TU msg = e.g. "TU %"
+		</p>
+	</li><li><p>alt-0 to alt-9 can be programmed in the logcfg.dat file 
+	</p>
+</li></ul>
+<p><img src="tlfdoc_files/messages.png" name="Graphic15" align="BOTTOM" border="0" height="197" width="560">
+<br>For the messages you can use a number of special characters: 
+</p>
+<ul>
+	<li><p style="margin-bottom: 0in;">% for YOURCALL 
+	</p>
+	</li><li><p style="margin-bottom: 0in;">@ for HISCALL 
+	</p>
+	</li><li><p style="margin-bottom: 0in;">[ for RST 
+	</p>
+	</li><li><p style="margin-bottom: 0in;"># for serial nr. 
+	</p>
+	</li><li><p style="margin-bottom: 0in;">- lower keyer speed by 5 wpm
+	(parallel interface only !) 
+	</p>
+	</li><li><p>+ increase keyer speed by 5 wpm (e.g. " ++5NN--#")
+	(parallel interface only) 
+	</p>
+</li></ul>
+<p style="margin-bottom: 0in;"><br><br>The easiest way to handle the
+messages is to edit them in the rules file for the relevant contest.
+You can keep separate rules files for different contests and
+operating situations.<br>You can list the messages with <b>":list"
+</b>and change them with <b>":message</b>".<img src="tlfdoc_files/changemessage.png" name="Graphic16" align="BOTTOM" border="0" height="57" width="436">
+<br><a href="#content"><strong><font color="#b31fff">Back to contents</font></strong>
+</a>
+</p>
+<hr>
+<p><a name="dupe"></a><br><br>
+</p>
+<h2><b>Dupe checking</b></h2>
+<p><img src="tlfdoc_files/check.png" name="Graphic17" align="BOTTOM" border="0" height="139" width="289">
+<br><br>With the <b>":check"</b> command you can open a
+pop-up search window which will tell you:</p>
+<ul>
+	<li><p style="margin-bottom: 0in;">On <b>what bands</b> you worked
+	the station, and what the <b>exchange</b> was</p>
+	</li><li><p style="margin-bottom: 0in;">If the station is a <b>dupe</b>,
+	the color will be red and the terminal will beep.</p>
+	</li><li><p style="margin-bottom: 0in;">On what bands you worked the
+	<b>country</b> already</p>
+	</li><li><p style="margin-bottom: 0in;">On what bands you worked the <b>zone</b>
+	already 
+	</p>
+	</li><li><p style="margin-bottom: 0in;">In case of other <b>multipliers</b>,
+	on what bands they were worked. 
+	</p>
+	</li><li><p>If the exchange is the same for every band, it is
+	automatically filled into the exchange field</p>
+</li></ul>
+<p><br><a href="#content"><strong><font color="#b31fff">Back to
+contents</font></strong> </a>
+</p>
+<h2><b>Intelligent exchange input check for the ARRL sweepstakes </b>
+</h2>
+<p style="margin-bottom: 0in;">In the arrl sweepstakes contest e.g.
+the exchange is SERIAL-PRECEDENCE-CHECK-SECTION.<br>Tlf enables you
+to input these items in almost any order, like 12A 87ORG or ORG 12 87
+A.If you set CALLUPDATE in logcfg.dat, the call in the call input
+field will be updated also. (needs blanks on bothsides, works for
+US/CANADA only...). The lowest line in the check window shows if tlf
+has recognized the right ingredients.<br>If no section is present in
+the exchange, tlf will ask for it before logging the qso.<br>This
+needs some experimenting <b>before</b> the contest to get acquainted
+with this feature. <br><br><a href="#content"><strong><font color="#b31fff">Back
+to contents</font></strong> </a>
+</p>
+<hr>
+<p><a name="partials"></a><br><br>
+</p>
+<h2><b>Check partials / auto_complete</b></h2>
+<p><br><br><img src="tlfdoc_files/partial.png" name="Graphic18" align="BOTTOM" border="0" height="76" width="257">
+<br><br>The check partials function is controlled via the logcfg.dat
+file with 3 parameters: 
+</p>
+<ul>
+	<li><p style="margin-bottom: 0in;">PARTIALS - switches the check
+	partial function on (max. 9 calls)</p>
+	</li><li><p style="margin-bottom: 0in;">USEPARTIALS - enables the
+	auto_complete function</p>
+	</li><li><p>MANY_CALLS - shows a large window with up to 50 calls</p>
+</li></ul>
+<p style="margin-bottom: 0in;">The check partial calls function uses a
+database derived from the master.dta file containingsome 25.000 known
+contest calls.<br>When the USEPARTIALS parameter is on, tlf will
+complete the call as soon as it is unique in the database.<br>This
+can of course lead to strange effects, but in my experience there are
+far more hits than misses.Sometimes you must edit the call because it
+has locked on a unique call.... Try it, and switch it off when you
+don't like it.<br>Some people find that 9 calls is not enough....
+MANY_CALLS will give you many calls.<br><br><img src="tlfdoc_files/partials.png" name="Graphic19" align="BOTTOM" border="0" height="354" width="566">
+<br><br><a href="#content"><strong><font color="#b31fff">Back to
+contents</font></strong> </a>
+</p>
+<hr>
+<h2><a name="propagation"></a><b>Checking propagation</b></h2>
+<p style="margin-bottom: 0in;"><br><br><img src="tlfdoc_files/prop.png" name="Graphic20" align="BOTTOM" border="0" height="357" width="571">
+<br><br>The propagation screen is invoked with <b>ctrl-p</b>.<br>The
+calculation actually uses the SSN value which is derived from SFI. If
+you are connected to a cluster, the WWV values will automatically be
+stored, and the last value used.Clfile is periodically checked for
+this, and the value stored in wwvfile.<br>Starting with version 0.4.4
+it is now possible to include the value of R or SFI in the logcfg.dat
+file.<br>The value will be picked up within a minute, and will be
+used for subsequentcalculations. The calculations are quite simple,
+but you may compare it to e.g. minprop 3. and see that it really
+comes quite close. This may be enhanced in the future, to influence
+the multiplier map...<br>All timing is related to UTC. <br><a href="#content"><strong><font color="#b31fff">Back
+to contents</font></strong> </a>
+</p>
+<hr>
+<h2><a name="cluster"></a><b>DX cluster connection</b></h2>
+<p>From version 0.6.1 onward, tlf has three methods to connect to a
+DX Cluster:</p>
+<ul>
+	<li><p style="margin-bottom: 0in;">Built-in <b>Telnet</b> client with
+	auto-connect 
+	</p>
+	</li><li><p style="margin-bottom: 0in;">Built-in terminal for <b>TNC or
+	MODEM</b> for ttyS0 or ttyS1 (2400 Bd fixed)</p>
+	</li><li><p>FIFO in the working directory to hook up with e.g. ax25 based
+	connections</p>
+</li></ul>
+<p><br><br>You get to the packet terminal with <b>:pac</b>. <br><br><img src="tlfdoc_files/cluster.png" name="Graphic21" align="BOTTOM" border="0" height="357" width="571">
+<br><br><b><i>Telnet internet connection</i> </b><br><br>To enable
+the telnet interface set the following commands in
+logcfg.dat:<br>TELNETHOST=internet address<br>TELNETPORT=8000 (most
+of the time)<br><br>e.g. the following lines to connect to
+<strong>44.137.24.19 port 8000</strong>:</p>
+<table bgcolor="#f8ffb6" cellpadding="2" cellspacing="2">
+	<tbody><tr>
+		<td>
+			<p>#TELNETHOST=217.126.142.43<br>#TELNETHOST=44.137.24.103<br>TELNETHOST=44.137.24.19<br>#<br>TELNETPORT=8000<br>#TELNETPORT=23</p>
+		</td>
+	</tr>
+</tbody></table>
+<p style="margin-bottom: 0in;"><br><b><i>TNC or Modem connection</i>
+</b><br><br>To enable the serial terminal interface set the following
+command in logcfg.dat:</p>
+<table bgcolor="#f8ffb6" cellpadding="2" cellspacing="2">
+	<tbody><tr>
+		<td>
+			<p>TNCPORT=/dev/ttySx or /dev/USBx<br>TNC_SPEED=2400 (the default
+			is 2400 Bd)</p>
+		</td>
+	</tr>
+</tbody></table>
+<p><br>This will open a tty for packet at 2400 Bd<br><br><b><i>Terminal
+operation</i> </b><br><br>The terminal commands are:</p>
+<ul>
+	<li><p style="margin-bottom: 0in;">:ENTER (in tlf) = goto terminal 
+	</p>
+	</li><li><p style="margin-bottom: 0in;">: (in terminal ) = goto tlf 
+	</p>
+	</li><li><p style="margin-bottom: 0in;">pg-up = goto view mode 
+	</p>
+	</li><li><p style="margin-bottom: 0in;">up-arrow, down-arrow = scroll in
+	view mode 
+	</p>
+	</li><li><p>ENTER = goto edit mode 
+	</p>
+</li></ul>
+<p style="margin-bottom: 0in;"><b><i>FIFO connection via the file
+system</i> </b><br><br>To enable the filesystem interface set the
+following command in logcfg.dat:</p>
+<table bgcolor="#f8ffb6" cellpadding="2" cellspacing="2">
+	<tbody><tr>
+		<td>
+			<p>FIFO_INTERFACE</p>
+		</td>
+	</tr>
+</tbody></table>
+<p><br>Tlf then regularly looks into a fifo called <b>"clfile"
+in its working directory</b>. It is your responsibility to get the
+info into it. Some examples:</p>
+<ul>
+	<li><p style="margin-bottom: 0in;">Goto the working directory and
+	start a <b>telnet session</b> in a new terminal.</p>
+	</li><li><p>start this session with <b>telnet <i>node </i>| tee -a clfile</b>
+		</p>
+	</li><li><p>Connect to the dxcluster, e.g. using <b>call</b> with 
+	</p>
+	<pre style="margin-bottom: 0.2in;">call -r interface | tee clfile</pre>
+	</li><li><p>For filtering, bandmap etc to work, the lines have to start
+	with: "DX de", Escape characters at the start of the
+	linehave to be filtered out (e.g. by using "|cut -c 7-97"</p>
+</li></ul>
+<p>As the FIFO_INTERFACE overrules the other ways of connecting, be
+sure to switch it off when using the tty or the telenet client!!</p>
+<p><br><b>Relevant commands: </b>
+</p>
+<ul>
+	<li><p style="margin-bottom: 0in;"><b>:cluster</b> - full cluster
+	content (filter with ":fil") 
+	</p>
+	</li><li><p style="margin-bottom: 0in;"><b>:spots </b>- only DX spots in
+	order of time 
+	</p>
+	</li><li><p style="margin-bottom: 0in;"><b>:map or "." (dot)</b>
+	- only spots for this band, sorted in frequency</p>
+	</li><li><p style="margin-bottom: 0in;"><b>:ENTER</b> - Go to the packet
+	terminal 
+	</p>
+	</li><li><p style="margin-bottom: 0in;"><b>Ctrl-B</b> - <b>Send msg</b> to
+	the terminal (on node connected to cluster through terminal only)</p>
+	</li><li><p style="margin-bottom: 0in;"><b>Ctrl-A</b> - <b>add</b> your
+	own spot to the list (if radio interface is not present the freq can
+	be input manually)<br><b>if the LAN is active the spot will be sent
+	to all nodes</b></p>
+	</li><li><p style="margin-bottom: 0in;"><b>Ctrl-G</b> - <b>grab</b> the
+	spot: type a partial call from the spot or map window into the call
+	field first.</p>
+	</li><li><p><b>:FILter</b> - the filter has 4 functions: 0=none,
+	1=garbage out, 2=announcements out, 3=spots only</p>
+</li></ul>
+<ul>
+	<p style="margin-bottom: 0in;"><b>Bandmap commands:</b></p>
+	<li><p style="margin-bottom: 0in;">Enter the bandmap with <b>:map</b>
+	or <b>"." (dot)</b></p>
+	</li><li><p style="margin-bottom: 0in;">When you are in the bandmap the
+	name changes to BANDMAP</p>
+	</li><li><p style="margin-bottom: 0in;">Use "." to change to
+	NEEDED (only countries you still need to work)</p>
+	</li><li><p style="margin-bottom: 0in;">Use <b>pg-up, pg-dwn, up, down</b>
+	to scroll the map 
+	</p>
+	</li><li><p style="margin-bottom: 0in;">A "+" sign appears if
+	there is an offset from start of list 
+	</p>
+	</li><li><p style="margin-bottom: 0in;">Leave the bandmap with ESCAPE 
+	</p>
+	</li><li><p>Outside the bandmap you can <b>G</b>rab a spot by entering a
+	few characters into the call input fieldand typing <b>ctrl-g</b>.<br>The
+	full call will appear in the input field, and the trx will go to the
+	spot frequency (only iftrxcontrol is working). 
+	</p>
+</li></ul>
+<p><br><br><img src="tlfdoc_files/clusteroutput.png" name="Graphic22" align="BOTTOM" border="0" height="127" width="559">
+</p>
+<table cellpadding="2" cellspacing="2">
+	<tbody><tr>
+		<td>
+			<p><img src="tlfdoc_files/spots.png" name="Graphic23" align="BOTTOM" border="0" height="130" width="204">
+						</p>
+		</td>
+		<td>
+			<p>Spots younger than 10 minutes are marked!!<br>Double spots are
+			sorted out... 
+			</p>
+		</td>
+	</tr>
+</tbody></table>
+<p><br><br>
+</p>
+<table cellpadding="2" cellspacing="2">
+	<tbody><tr>
+		<td>
+			<p><img src="tlfdoc_files/bandmap.png" name="Graphic24" align="BOTTOM" border="0" height="131" width="204">
+						</p>
+		</td>
+		<td>
+			<p>The bandmap sorts the frequencies and flags the ones you don.t
+			need (yellow).<br>You can also switch this display to NEEDED, <br>so
+			you will see only those countries you still have to work!! 
+			</p>
+		</td>
+	</tr>
+</tbody></table>
+<p><br><br>
+</p>
+<table border="0" cellpadding="2" cellspacing="0" width="954">
+	<col width="314">
+	<col width="1">
+	<col width="288">
+	<col width="337">
+	<tbody><tr>
+		<td rowspan="3" width="314">
+			<p><img src="tlfdoc_files/xplanet.png" name="Graphic25" align="BOTTOM" border="0" height="326" width="308">
+						</p>
+		</td>
+		<td colspan="3" width="633">
+			<p>You can use Hari Nair's Xplanet program to show the spots in
+			their location on the globe.To show azimuthal projection centred
+			on Eersel the Netherlands you start Xplanet with: <br>xlanetbg
+			-wait 10 -window -geometry 300x300 -markerfile
+			/home/rein/tlf/test/tlfmarkers<br>-projection azimuthal -longitude
+			5 -latitude 51<br>(see the xplanet documentation for an
+			explanation).<br>set the following line in logcfg.dat:</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="TOP" width="1"></td>
+		<td bgcolor="#fbffb5" width="288">
+			<p>MARKERCALLS=tlfmarkers</p>
+		</td>
+		<td valign="TOP" width="337"></td>
+	</tr>
+	<tr>
+		<td colspan="3" width="633">
+			<p>to show the calls spotted on the cluster (your directory may
+			vary, here it is the directory you run tlf from....)<br>The
+			display will now update every 10 seconds...</p>
+		</td>
+	</tr>
+</tbody></table>
+<p style="margin-bottom: 0in;"><br><br><a href="#content"><strong><font color="#b31fff">Back
+to contents</font></strong> </a>
+</p>
+<hr>
+<h2><a name="lan"></a><b>LAN connection (M/S and M/M operation) </b>
+</h2>
+<p><br>The tlf&nbsp; network interface uses the udp/ip protocol. It
+can handle as many nodes as the network bandwidth supports,but is
+limited to 8 nodes at present. (Address space is 64, so recompilation
+with MAXNODES=64 will handle 64 nodes).</p>
+<p>The udp protocol is used for minimum protocol overhead. Tests with
+several tlf nodes have shown that using the tcp protocol does not
+cure a network problem, it just adds protocol overhead. The tlf
+protocol uses short messages,which will not exceed the limit where
+fragmentation sets in. (udp buffer length is 256 bytes). A <b>:SYNC</b>
+command will synchronize the log on your machine with the log on
+another specified node if at all necessary (e.g. If a node has been
+down for some time, or started up during the contest).</p>
+<p>Each node has 1 receiver on udp port 6788, and sends the data it
+generates to the destination nodes.The list of destination nodes is
+defined in logcfg.dat of every node.</p>
+<p>The message format is very simple: &lt; THISNODE &gt; &lt; MESSAGE
+TYPE &gt; &lt;...data string...&gt;</p>
+<p>THISNODE is a character(A to H) and message type is also a
+character (1 to 9). 
+</p>
+<p><br><br>
+</p>
+<h3><i><b>TLF network functions </b></i>
+</h3>
+<p style="margin-bottom: 0in;"><br>The following message types
+presently exist: 
+</p>
+<table cellpadding="2" cellspacing="2">
+	<tbody><tr>
+		<td>
+			<p>1</p>
+		</td>
+		<td>
+			<p>Log data 
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>2</p>
+		</td>
+		<td>
+			<p>Packet data from cluster 
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>3</p>
+		</td>
+		<td>
+			<p>Add spot data to bandmap ("DX de TLF: ...") 
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>4</p>
+		</td>
+		<td>
+			<p>Frequency data 
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>5 
+			</p>
+		</td>
+		<td>
+			<p>Talk data 
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>6</p>
+		</td>
+		<td>
+			<p>Present serial number 
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>7</p>
+		</td>
+		<td>
+			<p>Present utc time 
+			</p>
+		</td>
+	</tr>
+</tbody></table>
+<p><br><br>
+</p>
+<p><b><i>Log data </i></b><br>Every tlf node has a copy of the
+complete log database. This has several advantages. <br>First, having
+the log at several places in the network reduces the risk of loosing
+it... <br>Second, it allows using the full power of the log search
+function (exchange recall and multiplier search). 
+</p>
+<p><b><i>Packet data </i></b><br>Packet data is available on all
+nodes, enabling quick spot access. This also means that only one node
+needs a packetconnection... <br><br><br><b><i>Add spot data </i></b><br>Enables
+local spotting and bandmap preload from any node on the network, even
+remotely on the internet...<br><br><b><i>Frequency data </i></b><br>Every
+60 seconds the node broadcasts its operating frequency (if trx
+control with Hamlib is used), or theband it is on. This greatly&nbsp;
+simplifies passing mults to a different band !! A display window
+shows what qrgthe nodes are working...<b>(:FRE or ALt-J)</b></p>
+<p style="margin-bottom: 0in;"><br>
+</p>
+<table cellpadding="2" cellspacing="2">
+	<tbody><tr>
+		<td>
+			<p><img src="tlfdoc_files/freqs.png" name="Graphic26" align="BOTTOM" border="0" height="190" width="245">
+						</p>
+		</td>
+		<td>
+			<p>Here you see that station A is on 7010 kHz and Station C (no
+			trx control) is on 20 meters.</p>
+		</td>
+	</tr>
+</tbody></table>
+<p style="margin-bottom: 0in;"><br><br><b><i>Talk data </i></b><br><img src="tlfdoc_files/talk.png" name="Graphic27" align="BOTTOM" border="0" height="62" width="273">
+<br><br>By just typing 
+</p>
+<table cellpadding="2" cellspacing="2">
+	<tbody><tr>
+		<td bgcolor="#ffff00">
+			<p><strong>Alt-g</strong> please 2 beers for 80 meters</p>
+		</td>
+	</tr>
+</tbody></table>
+<p>,&nbsp; this message is broadcast to all nodes on the list. A
+display window shows the last 5 messages received... (with <b>ctrl-t
+or Alt-g</b>)<br><br><img src="tlfdoc_files/talkmessages.png" name="Graphic28" align="BOTTOM" border="0" height="357" width="571">
+<br><br><br><br><b><i>Present serial number </i></b><br><br>Used when
+a serial number is used for the exchange (SERIAL_EXCHANGE is set in
+logcfg.dat), e.g. in the wpx contest.As soon as a serial number is
+sent, it is blocked on the other nodes.... This bridges the time
+between sendingthe exchange and actually&nbsp; logging the qso,
+mostly preventing that serial numbers are given out twice!!<br><br><b><i>Present
+utc time </i></b><br><br>When TIME_MASTER is set in logcfg.dat the
+station broadcasts the actual utc time to the other nodes. <br>When
+you do this, the other tlf nodes will use this time. The time receive
+function has a smoothing filter,so one wrong number will not kick the
+node out of sync. 
+</p>
+<h3><i><b>Setup for the LAN functions </b></i>
+</h3>
+<p style="margin-bottom: 0in;">To use networking with tlf is not
+difficult. <br><br>First step is to provide <b>ip connectivity
+</b>between the nodes that you want to communicate with. It is not
+important whether you use an ethernet link, ppp, or whatever.In my
+shack I use a 10 Mbit coax ethernet, with a ppp bridge to the house
+via a 56k modem. This allows meto remote control the OMNI from the
+living room... <br>For tlf, the word is: "if you can ping it, it
+will communicate".<br><br>There is one thing to remember: there
+must be connectivity for port number 6788. So if there is a
+firewallbetween two tlf sites, make sure it passes traffic to port
+6788. (Just in case you would want to include theinternet in your
+routing...)<br><br>Second step: Provide a <b>short form unique
+address</b> for the node, so tlf can seewhich node generated the
+data. For brevity this address is a character from A...H (for an
+address spaceof 8 nodes). <b>If tlf hears it's own node ID it will
+ask for another one!!</b><br><br>Third: <b>Edit logcfg.dat </b>for
+each node. The only data tlf needs are the short form address of its
+node,and the ip addresses (the addresses you use for the ping) of the
+nodes it wants to communicate with.<br>You can optionally suppress
+the logging function, e.g. for nodes&nbsp; which only provide spots
+for the bandmap... <br>During the communication setup phase it is
+possible to write a logfile (debuglog) of all messages the node
+receives to disk. <br><br># 
+</p>
+<table bgcolor="#f8ffb6" cellpadding="2" cellspacing="2">
+	<tbody><tr>
+		<td>
+			<p>THISNODE=B <br>ADDNODE=192.168.1.2 <br>ADDNODE=192.168.1.3 
+			</p>
+		</td>
+	</tr>
+</tbody></table>
+<p style="margin-bottom: 0in;">#<br><br>To receive packet information
+from the network, the FIFO input should be activated. <br># 
+</p>
+<table bgcolor="#f8ffb6" cellpadding="2" cellspacing="2">
+	<tbody><tr>
+		<td>
+			<p>FIFO_INTERFACE 
+			</p>
+		</td>
+	</tr>
+</tbody></table>
+<p style="margin-bottom: 0in;"><br><br>That's all.... <br><br>switch
+the debug file on with:</p>
+<table bgcolor="#f8ffb6" cellpadding="2" cellspacing="2">
+	<tbody><tr>
+		<td>
+			<p>LAN_DEBUG</p>
+		</td>
+	</tr>
+</tbody></table>
+<p><br><br>
+</p>
+<h3><i><b>Monitoring </b></i>
+</h3>
+<p style="margin-bottom: 0in;"><br><br><img src="tlfdoc_files/info.png" name="Graphic29" align="BOTTOM" border="0" height="356" width="572">
+<br><br>With <b>:info</b> you get a screen showing the node
+addresses, packets received, packets sent, and numberof send errors
+per node. A send error occurs when a node cannot be reached, e.g. if
+tlf is not yet running on it.<br><br>If you set the <b>LAN_DEBUG</b>
+command in logcfg.dat you get a dump called "debuglog" in
+your working directory, showing all raw messages received on this
+node. It can be very valuable to have 1 node on the LAN listening to,
+and recording all messages. It will enable you to restore the log
+after a catastrophic failure, or post-analyse cluster messages etc,
+etc...<br><br><img src="tlfdoc_files/debug.png" name="Graphic30" align="BOTTOM" border="0" height="234" width="497">
+<br><br><br><br><br><a href="#content"><strong><font color="#b31fff">Back
+to contents</font></strong> </a>
+</p>
+<hr>
+<p><a name="simulator"></a><br><br><img src="tlfdoc_files/sim.png" name="Graphic31" align="BOTTOM" border="0" height="125" width="206">
+</p>
+<h2><b>Working with the CW simulator</b></h2>
+<p>The CW simulator is switched on with <b>":sim"</b>.<br>Set
+the contest to CQWW (CONTEST=cqww in logcfg.dat)<br>After your CQ
+with <b>F1</b> the run begins. If it stops, call cq again.<br><br>The
+simulator is meant to work in TRlog mode. It uses the PC speaker for
+output. This means you can not switch off the speaker with :TONE in
+simulator mode!</p>
+<p style="margin-bottom: 0in;"><a href="#content"><strong><font color="#b31fff">Back
+to contents</font></strong> </a>
+</p>
+<hr>
+<p style="margin-bottom: 0in;"><b>Making a contest qso in CQ Mode
+(TRlog compatible)</b><br><br>1: Press <b>ENTER</b> to start the F12
+message ("CQ TEST YOURCALL...") or <b>F1</b><br>HC8N:
+"<i>HC8N</i>"<br>2: Type HC8N<br>3: Press <b>ENTER</b>
+(YOU: "HC8N 5NN14") (message is in <b>F3</b>)<br>HC8N:
+"<i>TUENNAT</i>"<br>4: Press <b>ENTER</b> (YOU: "TU
+YOURCALL") (message in <b>CQ_MESSAGE</b>)<br>N6TR: "<i>K7RAT</i>"<br>2:
+type K7RAT<br>3: Press <b>ENTER</b><br>etc...<br><br>&nbsp;<br><a href="#content"><strong><font color="#b31fff">Back
+to contents</font></strong> </a>
+</p>
+<hr>
+<p><b>Using the keyer</b><br>the keyer is started with Ctrl-K or with
+"," (comma). The comma will only work when the callinput
+field is empty (and if trxmode is CW of course.<br>The following
+special cw characters are supported on the serial interface: 
+</p>
+<dl>
+	<dd>
+	<table border="1" cellpadding="2" cellspacing="2">
+		<tbody><tr>
+			<td>
+				<p>AR</p>
+			</td>
+			<td>
+				<p align="CENTER"><b>*</b></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>BT</p>
+			</td>
+			<td>
+				<p align="CENTER"><b>=</b></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>SK</p>
+			</td>
+			<td>
+				<p align="CENTER"><b>&lt;</b></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>KN</p>
+			</td>
+			<td>
+				<p align="CENTER"><b>(</b></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>SN</p>
+			</td>
+			<td>
+				<p align="CENTER"><b>!</b></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>AS</p>
+			</td>
+			<td>
+				<p align="CENTER"><b>&amp;</b></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>BK</p>
+			</td>
+			<td>
+				<p align="CENTER"><b>&gt;</b></p>
+			</td>
+		</tr>
+	</tbody></table>
+</dd></dl>
+<p style="margin-bottom: 0in;">Stop the sending with <b>ESCAPE</b>.
+<br><br>The cwdaemon features direct mode, so every character ist
+sent to the keyer immediately...<br><br><img src="tlfdoc_files/keyer2.png" name="Graphic32" align="BOTTOM" border="0" height="106" width="222">
+<br><br>&nbsp;<br><a href="#content"><strong><font color="#b31fff">Back
+to contents</font></strong> </a>
+</p>
+<hr>
+<p style="margin-bottom: 0in;"><b>Making a contest qso in S&amp;P
+Mode</b><br><br>1: find a station to call<br>2: Type HC8N to enter
+the call into the input field<br>3: Press <b>ENTER</b> (YOU:
+"YOURCALL") or <b>F1</b><br>HC8N: "<i>YOURCALL
+ENNAT</i>"<br>4: Press <b>ENTER</b> (YOU: "TU 5NN14")
+(the message is in <b>SP_MESSAGE</b>)<br>HC8N: "<i>TU
+HC8N</i>"<br><br>&nbsp;<br><a href="#content"><strong><font color="#b31fff">Back
+to contents</font></strong> </a>
+</p>
+<hr>
+<p><a name="Commands"></a><b>Making a normal qso</b><br><br>- Switch
+contest mode off<br>- Use the check window to see if you have worked
+the stn. before, and<br>to remember his/her name :-))<br>- Tab into
+the exchange field for comments (name, qth)<br>- Use ; (notes) for
+further comments<br>- Reprogram the key saying SRI QSO B4 to contain
+the local WX.<br>- Use , (keyboard) to tell your story, nice and
+slowly...<br><br><a href="#content"><strong><font color="#b31fff">Back
+to contents</font></strong> </a>
+</p>
+<h2><b>Command Overview</b></h2>
+<p><i><u><b>This overview is out of date; for the last version see
+the tlf manpage (man tlf) or the internal :HELp command....</b></u></i></p>
+<p><br>Most commands start with a <b>":"</b>, and you need
+to type only the <b>first 3 characters</b>.</p>
+<table bgcolor="#8fffff" border="1" cellpadding="2" cellspacing="2" width="600">
+	<tbody><tr>
+		<td></td>
+		<td valign="TOP"></td>
+		<td valign="TOP"></td>
+	</tr>
+	<tr>
+		<td>
+			<p><b>TR</b></p>
+		</td>
+		<td>
+			<p><b>CT</b></p>
+		</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>
+			<p>:help</p>
+		</td>
+		<td>
+			<p>Alt-H</p>
+		</td>
+		<td>
+			<p>Show online help</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>:mode</p>
+		</td>
+		<td></td>
+		<td>
+			<p>switch trx mode (CW, SSB, DIG) 
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>:CWMode</p>
+		</td>
+		<td></td>
+		<td>
+			<p>switch trx mode (CW) 
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>:SSB</p>
+		</td>
+		<td></td>
+		<td>
+			<p>switch trx mode (SSB) 
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>:DIG</p>
+		</td>
+		<td></td>
+		<td>
+			<p>switch trx mode (DIGIMODE) 
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>:set</p>
+		</td>
+		<td></td>
+		<td>
+			<p>list and set parameters. <br><br>the following contests are
+			supported (many more possible):</p>
+			<ul>
+				<li><p style="margin-bottom: 0in;">CQWW 
+				</p>
+				</li><li><p style="margin-bottom: 0in;">WPX 
+				</p>
+				</li><li><p style="margin-bottom: 0in;">ARRL-DX (both sides) 
+				</p>
+				</li><li><p style="margin-bottom: 0in;">PACC (both sides) 
+				</p>
+				</li><li><p style="margin-bottom: 0in;">NRAU 
+				</p>
+				</li><li><p style="margin-bottom: 0in;">EU SPRINT 
+				</p>
+				</li><li><p style="margin-bottom: 0in;">EU HF Championship 
+				</p>
+				</li><li><p style="margin-bottom: 0in;">R1 Field day 
+				</p>
+				</li><li><p style="margin-bottom: 0in;">ARRL Field day 
+				</p>
+				</li><li><p style="margin-bottom: 0in;">ARRL SS 
+				</p>
+				</li><li><p style="margin-bottom: 0in;">Other (wysiwyg mults) 
+				</p>
+				</li><li><p style="margin-bottom: 0in;">DX-pedition 
+				</p>
+				</li><li><p>General qso 
+				</p>
+			</li></ul>
+		</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>
+			<p>Alt-v</p>
+		</td>
+		<td>
+			<p>Up-Arrow: Increase CW speed (3wpm)</p>
+		</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td>
+			<p>Down-Arrow: Decrease CW speed (3wpm)</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+		<td>
+			<p>Alt-w</p>
+		</td>
+		<td>
+			<p>Set weight (-5 ... 5);</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>Pg-up</p>
+		</td>
+		<td></td>
+		<td>
+			<p>If call field empty:<br>&nbsp;&nbsp;&nbsp;&nbsp;Increase
+			Auto_CQ delay (1 sec)<br>If not empty:<br>&nbsp;&nbsp;&nbsp;&nbsp;increase
+			R<b>S</b>T</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>Pg-down</p>
+		</td>
+		<td></td>
+		<td>
+			<p>If call field empty:<br>&nbsp;&nbsp;&nbsp;&nbsp;Decrease
+			Auto_CQ delay (1 sec)<br>If not empty:<br>&nbsp;&nbsp;&nbsp;&nbsp;decrease
+			R<b>S</b>T</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+		<td></td>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>F12 
+			</p>
+		</td>
+		<td></td>
+		<td>
+			<p>Start Auto_CQ</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>F1-F11</p>
+		</td>
+		<td></td>
+		<td>
+			<p>Send CW message</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+		<td></td>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>:tone</p>
+		</td>
+		<td></td>
+		<td>
+			<p>Set sidetone frequency (200-900 Hz) or OFF (0)<br>A value
+			between 2 and 20 will add <b>weight</b> to the cw elements</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+		<td></td>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>Tab</p>
+		</td>
+		<td></td>
+		<td>
+			<p>Switch between <b>call input</b> and <b>exchange</b> fields</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>+</p>
+		</td>
+		<td></td>
+		<td>
+			<p>Toggle <b>CQ</b>/<b>S&amp;P</b> mode</p>
+		</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>
+			<p>+</p>
+		</td>
+		<td>
+			<p>Send F3 + log qso</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>:SIM</p>
+		</td>
+		<td></td>
+		<td>
+			<p>Toggle <b>CW simulator</b> (run) mode (TR only)</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+		<td></td>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>Left-Arrow</p>
+		</td>
+		<td></td>
+		<td>
+			<p><b>Change band</b> if callsign field empty<br>(enter edit mode
+			if callsign present, leave edit mode with ENTER or ESC)</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>Right-Arrow</p>
+		</td>
+		<td></td>
+		<td>
+			<p><b>Change band</b></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+		<td></td>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>ENTER</p>
+		</td>
+		<td></td>
+		<td>
+			<p>Smart key for contest mode</p>
+			<ul>
+				<p>Calls cq<br>Calls station<br>Sends exchange<br>Logs the qso</p>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>\</p>
+		</td>
+		<td>
+			<p>ENTER</p>
+		</td>
+		<td>
+			<p><b>log</b> qso w/o CW;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>;</p>
+		</td>
+		<td>
+			<p>Alt-N</p>
+		</td>
+		<td>
+			<p>Insert <b>note</b> in log</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>,<br>ctrl-k 
+			</p>
+		</td>
+		<td>
+			<p>Alt-K</p>
+		</td>
+		<td>
+			<p><b>Keyboard</b> on. This works only when the call input field
+			is empty. use ctrl-k if it isn't.</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>ESCAPE</p>
+		</td>
+		<td></td>
+		<td>
+			<p>Return to call input field 
+			</p>
+			<ul>
+				<p>keyboard off<br>stop cw<br>reset call and exchange</p>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>Ctlr-p</p>
+		</td>
+		<td></td>
+		<td>
+			<p><b>Propagation</b> info</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>Ctlr-t</p>
+		</td>
+		<td>
+			<p>Alt-I</p>
+		</td>
+		<td>
+			<p><b>Last 5 talk messages</b></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p><b>"</b></p>
+		</td>
+		<td>
+			<p>Alt-G</p>
+		</td>
+		<td>
+			<p><b>Send talk message to other tlf nodes"</b></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>-</p>
+		</td>
+		<td></td>
+		<td>
+			<p><b>Delete</b> last qso</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>Up-arrow</p>
+		</td>
+		<td></td>
+		<td>
+			<p><b>Edit</b> last qso<br>Insert, overwrite, and delete; + log
+			view</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>=</p>
+		</td>
+		<td></td>
+		<td>
+			<p><b>Confirm</b> last call</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>_ (underscore)</p>
+		</td>
+		<td></td>
+		<td>
+			<p><b>Confirm</b> last exchange</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+		<td></td>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>#</p>
+		</td>
+		<td></td>
+		<td>
+			<p>trx qrg -&gt; mem<br>mem -&gt; trx qrg</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>ctrl-g</p>
+		</td>
+		<td></td>
+		<td>
+			<p><b>Grab</b> a dx spot</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>ctrl-a</p>
+		</td>
+		<td></td>
+		<td>
+			<p><b>Add</b> a dx spot to the spot list or bandmap</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>ctrl-b</p>
+		</td>
+		<td></td>
+		<td>
+			<p><b>Send</b> message to cluster</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>ctrl-f</p>
+		</td>
+		<td></td>
+		<td>
+			<p>Change TRX frequency with up_arrow, down_arrow (100 Hz at the
+			time)</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>:PACket</p>
+		</td>
+		<td></td>
+		<td>
+			<p>goto packet terminal</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>:VIEw</p>
+		</td>
+		<td>
+			<p>Up-arrow</p>
+		</td>
+		<td>
+			<p><b>View</b> the log with LESS</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>:EDIt</p>
+		</td>
+		<td></td>
+		<td>
+			<p><b>Edit</b> the log with JOE (ctrl-K H = help), vi or e3</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>:LISt 
+			</p>
+		</td>
+		<td></td>
+		<td>
+			<p>List CW messages</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>:MESsage</p>
+		</td>
+		<td></td>
+		<td>
+			<p>Edit CW messages</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>:set, :cfg</p>
+		</td>
+		<td></td>
+		<td>
+			<p>edit logcfg.dat configuration file</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>:WRIte</p>
+		</td>
+		<td></td>
+		<td>
+			<p>Write Cabrillo file (for selected contests:<br>CQWW, WPX,
+			ARRL-DX)</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>!</p>
+		</td>
+		<td></td>
+		<td>
+			<p>Get a new shell</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>:EXIt</p>
+		</td>
+		<td>
+			<p>Alt-X, Alt-Q</p>
+		</td>
+		<td>
+			<p>Exit the program</p>
+		</td>
+	</tr>
+</tbody></table>
+<p><a name="Options"></a><br><a href="#content"><strong><font color="#b31fff">Back
+to contents</font></strong> </a>
+</p>
+<h2><b>Options</b></h2>
+<p><i><u><b>This overview is out of date, for the last version see
+the tlf manpage (man tlf) or the internal :HELp command....</b></u></i></p>
+<table bgcolor="#8fffff" border="1" cellpadding="2" cellspacing="2" width="600">
+	<tbody><tr>
+		<td>
+			<p>:mult</p>
+		</td>
+		<td>
+			<p>Alt-M, Alt-C</p>
+		</td>
+		<td>
+			<p>Toggle remaining multiplier display</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>:contest</p>
+		</td>
+		<td></td>
+		<td>
+			<p>Toggle contest mode on/off</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>:check 
+			</p>
+		</td>
+		<td></td>
+		<td>
+			<p>dupe check window on</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>:nocheck</p>
+		</td>
+		<td></td>
+		<td>
+			<p>dupe check window off</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>:score</p>
+		</td>
+		<td>
+			<p>Alt-S, Alt-R</p>
+		</td>
+		<td>
+			<p>Toggle score window on/off</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+		<td></td>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>:cluster</p>
+		</td>
+		<td>
+			<p>Alt-A</p>
+		</td>
+		<td>
+			<p>Show cluster window or...</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>:map</p>
+		</td>
+		<td>
+			<p>Alt-,</p>
+		</td>
+		<td>
+			<p>Show Band Map or...</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>:spots</p>
+		</td>
+		<td>
+			<p>Alt-A</p>
+		</td>
+		<td>
+			<p>Show last 10 spots or...</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>:freq</p>
+		</td>
+		<td>
+			<p>Alt-J</p>
+		</td>
+		<td>
+			<p>Show frequency or band info...</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>:cloff</p>
+		</td>
+		<td>
+			<p>Alt-A</p>
+		</td>
+		<td>
+			<p>No cluster info (non-assisted contest operation)</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>:info</p>
+		</td>
+		<td></td>
+		<td>
+			<p>network status</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>:cty</p>
+		</td>
+		<td>
+			<p>Alt-M</p>
+		</td>
+		<td>
+			<p>Show country multipliers per continent</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>:zone</p>
+		</td>
+		<td>
+			<p>Alt-Z</p>
+		</td>
+		<td>
+			<p>Toggle zones/sections worked display</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>:trxcontrol</p>
+		</td>
+		<td></td>
+		<td>
+			<p>toggle trxcontrol on/off (default off, only makes sense<br>with
+			rigcontrol capability)</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>:ritclear</p>
+		</td>
+		<td></td>
+		<td>
+			<p>rit reset on/off 
+			</p>
+		</td>
+	</tr>
+</tbody></table>
+<p><a name="Logcfg"></a><br><br><a href="#content"><strong><font color="#b31fff">Back
+to contents</font></strong> </a>
+</p>
+<h2><b>Logcfg.dat file</b></h2>
+<p><i><u><b>This overview is out of date; for the last version see
+the tlf manpage (man tlf) or the internal :HELp command....</b></u></i></p>
+<p><br><br>
+</p>
+<table bgcolor="#8fffff" border="1" cellpadding="2" cellspacing="2" width="600">
+	<tbody><tr>
+		<td>
+			<p>CTCOMPATIBLE</p>
+		</td>
+		<td>
+			<p><b>CT compatible qso logging (default TR)</b></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>EDITOR=joe <br>#EDITOR=vi <br>#EDITOR=e3</p>
+		</td>
+		<td>
+			<p>choose your favourite editor for :edit and :set</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>CALL=PA0RCT</p>
+		</td>
+		<td>
+			<p><b>don't forget to change this one !!</b></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>#CONTEST=cqww <br>#CONTEST=wpx <br>#CONTEST=sprint
+			<br>#CONTEST=arrldx_usa <br>#CONTEST=arrldx_dx <br>#CONTEST=arrl_fd
+			<br>#CONTEST=arrl_ss <br>#CONTEST=pacc_pa <br>CONTEST=dxped
+			<br>#CONTEST=qso <br>#CONTEST=any (you name it) #<br>#CQWW_M2</p>
+		</td>
+		<td>
+			<p>CQWW_M2 is set <b>together</b>with CONTEST=cqww if you are
+			working in the M2 category. This sets the station info into the
+			cabrillo file (stn1 or stn 0). <br><br>Use CONTEST=qso for general
+			log use.</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>LOGFILE=dxped.log</p>
+		</td>
+		<td>
+			<p><b>don't forget to change this one !!</b></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>TIME_OFFSET=-1</p>
+		</td>
+		<td>
+			<p><b>time offset to utc in hours if your system clock does not
+			run on utc.</b></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>#LPT1<br>#COM1<br>NETKEYER<br>NETKEYERPORT=6789<br>NETKEYERHOST=127.0.0.1</p>
+		</td>
+		<td>
+			<p>PA3FKN keyer (not preferred)<br>Serial port keyer from 9A3TY
+			not preferred)<br>cwdaemon (preferred !!)<br>daemon udp port
+			<br>daemon host address (127.0.0.1 for this machine)</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>##---speed (6 ... 60 wpm) <br>SPEED=30 <br>##---weight (-5 ...
+			5 ms) <br>WEIGHT=0 <br>##---txdelay (ms) <br>TXDELAY=51
+			<br>##---sidetone (200...800, 0 = mute) <br>TONE=800 <br>#</p>
+		</td>
+		<td>
+			<p>set the keyer parameters<br>most (except speed and sidetone)
+			are only available for the parallel port keyer</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>#TELNETHOST=131.155.192.179 <br># <br>#TELNETPORT=8000 <br>#
+			<br>#TNCPORT=0 <br>#TNCPORT=1 <br>#TNCSPEED=2400 <br>#
+			<br>FIFO_INTERFACE <br># 
+			</p>
+		</td>
+		<td>
+			<p>telnet host address of cluster<br><br>port number of cluster
+			(8000 for pi4tue)<br><br>ttyS0<br>ttyS1<br><br><br><br>file system
+			interface</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p># <br>THISNODE=B <br>ADDNODE=192.168.1.2 <br>#ADDNODE=192.168.1.3
+			<br>#etc...<br>#<br>LAN_DEBUG <br>#<br>#TIME_OFFSET=0<br>#<br>#TIME_MASTER<br>#</p>
+		</td>
+		<td>
+			<p><br>short form address of this node<br>ip network address of
+			other node<br>ip network address of other node<br><br><br><br>log
+			LAN messages recvd by this nodein file <strong>debuglog</strong><br><br>set
+			time difference to system time (hrs)<br><br>This station is time
+			sync master</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>RADIO_CONTROL <br>#RIGPORT=0 <br>RIGPORT=1
+			<br>RIGSPEED=9600<br>#RIT_CLEAR <br>#SHOW_FREQUENCY 
+			</p>
+		</td>
+		<td>
+			<p>rig control on<br>rig port is ttyS0<br>rig port is ttyS1<br>rig
+			speed is 9600 Bd<br>clear RIT after qso<br>show large freq.
+			window<br>.</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>#CLUSTER <br>#BANDMAP <br>SPOTLIST <br># <br>#SCOREWINDOW
+			<br>CHECKWINDOW</p>
+		</td>
+		<td>
+			<p>switch information windows on/off</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>#PARTIALS <br>#USEPARTIALS <br>#MANY_CALLS</p>
+		</td>
+		<td>
+			<p>switch partial call function on<br>auto_complete function<br>see
+			many calls :-)</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>#SUNSPOTS=102 <br>SFI=180</p>
+		</td>
+		<td>
+			<p>set initial value for muf calculation</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>F1=CQ CQ DX DE % % k <br>F2=@ DE % <br>F3=@ ++[-- <br>F4=TU 73
+			<br>F5= @ <br>F6=% <br>F7=@ SRI QSO B4 GL <br>F8=AGN <br>F9= ?
+			<br>F10= QRZ? <br>F11= PSE K <br>F12=TEST % % <br># <br>CW_TU_MSG=TU
+			73 % <br>S&amp;P_TU_MSG=TU [ <br>#
+			<br>ALT_0=message...<br>ALT_1=<br>ALT_2=<br>ALT_3=<br>ALT_4=<br>ALT_5=<br>ALT_6=<br>ALT_7=<br>ALT_8=<br>ALT_9=<br>#SHORT_SERIAL
+			<br>LONG_SERIAL <br># <br>SEND_DE</p>
+		</td>
+		<td>
+			<p><br>% = call <br>@ = hiscall <br># = serial <br>[ = RST <br><br>+
+			= increase cw speed <br>- = decrease cw speed <br>(works only with
+			parport <br>interface) <br>F12: auto_cq message<br><br><br><br>contest
+			mode: TU message in CQ mode<br>contest mode: TU message in S&amp;P
+			mode<br><br><br><br><br><br><br><br><br><br><br><br><br><br>e.g.
+			TT1 instead of 001<br><br><br>relict from TRlog</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>NOB4 
+			</p>
+		</td>
+		<td>
+			<p>Don't send QSO B4 message in F7, work the dupe! 
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>#CONTEST_MODE</p>
+		</td>
+		<td>
+			<p>Contest mode</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>#CALLUPDATE</p>
+		</td>
+		<td>
+			<p>Update call in exchange window (arrl ss and cqww only)</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>#MIXED</p>
+		</td>
+		<td>
+			<p>Mixed mode</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>#RECALL_MULTS</p>
+		</td>
+		<td>
+			<p>used in "other" contest mode when exchange does not
+			change between bands</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>#ONE_POINT
+			<br>#TWO_POINTS<br>#THREE_POINTS<br>#USE_COUNTRYLIST_ONLY<br>COUNTRYLIST=SP_DX:SP<br>COUNTRY_LIST_POINTS=10<br>MY_COUNTRY_POINTS=1<br>MY_CONTINENT_POINTS=2<br>DX_POINTS=3</p>
+		</td>
+		<td>
+			<p>Points per qso for scoring. In this example, a qso with SP will
+			get 10 points, a qso with your own country 1 point, another
+			country in your own continent 2 points, and any dx qso 3 points.
+			<br>If USE_COUNTRYLIST_ONLY is set, the countries in the list get
+			COUNTRY_LIST_POINTS, and all others 0. <br>The first 3 parameters
+			override all others, i.e. ONE_POINT gives 1 point to every qso.</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>#2EU3DX_POINTS</p>
+		</td>
+		<td>
+			<p>2 points for own continent, 3 for other continents (same as
+			MY_CONTINENT_POINTS=2 and DX_POINTS=3) 
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>#SERIAL_EXCHANGE</p>
+		</td>
+		<td>
+			<p>exchange is serial number (formats exchange, and does a lot of
+			other weird things. Sometimes useful to switch it off...) 
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>#COUNTRY_MULT</p>
+		</td>
+		<td>
+			<p>multiplier is CQDX country</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>#SECTION_MULT</p>
+		</td>
+		<td>
+			<p>exchange is section, mult is section from MULT_LIST file 
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>#SERIAL+SECTION</p>
+		</td>
+		<td>
+			<p>exchange is serial nr. + section, mult is section from file 
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>#DX_&amp;_SECTION</p>
+		</td>
+		<td>
+			<p>exchange is section or country, mult is section from file or
+			dxcc country 
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>#MULT_LIST=xxxxx</p>
+		</td>
+		<td>
+			<p>name of multipliers file</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>#WYSIWYG_MULTIBAND</p>
+		</td>
+		<td>
+			<p>tlf makes its own mult file, counts per band</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>#WYSIWYG_ONCE</p>
+		</td>
+		<td>
+			<p>tlf makes its own mults file, counts once per contest
+			(untested) 
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>#POWERMULT_5 <br>#POWERMULT_2 
+			</p>
+		</td>
+		<td>
+			<p>power multiplier for qrp contests or e.g. the arrl field
+			day<br>the qso points are multipliedby this fixed amount,
+			depending on output power</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>#PORTABLE_MULT_2 
+			</p>
+		</td>
+		<td>
+			<p>Multiply points x2 if /P stn</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>#MARKERCALLS=xxxx 
+			</p>
+		</td>
+		<td>
+			<p>generate markefile for xplanet (dots + calls) 
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>#MARKERDOTS=xxxx 
+			</p>
+		</td>
+		<td>
+			<p>generate markerfile for xplanet (dots only) 
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>#MARKERS=xxxx 
+			</p>
+		</td>
+		<td>
+			<p>generate markerfile for xplanet (include last line of cluster
+			output) 
+			</p>
+		</td>
+	</tr>
+</tbody></table>
+<p><a name="Other"></a><br><a href="#content"><strong><font color="#b31fff">Back
+to contents</font></strong> </a>
+</p>
+<h2>OTHER CONTESTS</h2>
+<p><br>It is possible to make your own combination of points and
+multipliers and <b>make your own rules file</b> for a specific
+contest. E.g.:</p>
+<hr size="2">
+<p>If you are a G-stn and you would want to program the <b>EUHFC
+contest </b>you could
+use:<br>CALL=G0XXX<br>LOGFILE=euhfc.log<br>CONTEST=euhfc2003
+<br>RECALL_MULTS <br>ONE_POINT<br>WYSIWYG_MULTIBAND <br><br>This will
+take care of the "license year" multipliers, which count as
+a multiplier on each band, and give you one point per qso. The score
+window will show the proper data, and the contest will be
+rescoredevery time you restart tlf. 
+</p>
+<hr size="2">
+<p>If you are an OH-stn and you would want to program the <b>NRAU
+contest </b>you could use:<br>LOGFILE=nrau.log<br>CONTEST=nrau2003
+<br>TWO_POINTS<br>SERIAL+SECTION<br>MULT_LIST=nrau <br>In the working
+directory you place a file called "nrau" with the
+multipliers, e.g.:<br>AA<br>AH<br>AI<br>AK <br>AL <br>AT <br>AU<br>BA
+<br>etc.... 
+</p>
+<hr size="2">
+<p>If you are in the USA and want to take part in the <b>PACC</b>
+contest: <br><br>LOGFILE=pacc.log <br>CONTEST=pacc _dx (NOT pacc_pa,
+that is for the PA stns...) <br>ONE_POINT <br>SECTION_MULT
+<br>MULT_LIST=pacc <br>RECALL_MULTS <br>In the working directory
+(e.g. ./tlf/pacc) you place the logcfg.dat and a file called "pacc"
+with the multipliers, e.g.:<br>DR <br>FR <br>GR <br>etc.... <br><br><br>
+</p>
+<hr size="2">
+<p>A new (theoretical) contest called BENELUX-TEST could be
+programmed as follows:<br><br>LOGFILE=benelux.log<br>CONTEST=Benelux_test
+CONTEST_MODE
+COUNTRYLIST=BENELUX:PA,ON,LX<br>USE_COUNTRY_LIST_ONLY<br>COUNTRY_LIST_POINTS=11<br>WYSIWYG_MULTIBAND<br><br>This
+would give 11 points per qso with PA, ON or LX, and no points for
+working XW8AA. The multiplier could be a province or section
+abbreviation, your age, year of licence or the name of your cat.</p>
+<hr size="2">
+<p>The <strong>CQWW 160 m </strong>contest would need the following
+commands:<br><br>LOGFILE=cqww160.log<br>CONTEST=cqww160<br>CONTEST_MODE<br>MY_COUNTRY_POINTS=2<br>MY_CONTINENT_POINTS=5<br>DX_POINTS=10<br>DX_&amp;_SECTIONS<br>MULT_LIST=us_canada_states<br><br>Include
+a file usa_canada_states in the working directory.</p>
+<hr size="2">
+<p><b>More multiplier capabilities will follow...</b><br><br>With
+time, more basic capabilities can be developed to provide a "menu"
+to program morecontests.... <br>This is a matter of time and
+priorities. 
+</p>
+<h2>BUGS/TODO</h2>
+<p><br>If you find any, or have suggestions for TLF, send comment to
+<b><i>tlf-devel@nongnu.org</i></b></p>
+<h2>Licence and copyright</h2>
+<p><br><i>Copyright 2001, 2002 Rein Couperus (PA0RCT)</i><br><br><i>This
+program is distributed under the terms of the GNU General Public
+License.</i></p>
+<p>This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 2 of the
+License, or (at your option) any later version. 
+</p>
+<p>This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details. 
+</p>
+<p>You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
+USA 
+</p>
+</body></html>
