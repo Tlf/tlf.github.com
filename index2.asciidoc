@@ -1,0 +1,71 @@
+image::pics/TLFlogo.jpg["TLF logo",align="center"]
+== A console mode contest logger for hamradio under LINUX ==
+
+****
+_TLF_ was developed from 2001 on by Rein Couperous, PA0R. In last time 
+Thomas Beierlein, DL1JBE, took over. The program is published under the GPL.
+****
+
+image::pics/snapshot5.png["TLF",align="center"]
+
+_TLF_ is a console (ncurses) mode general purpose CW/VOICE keyer, logging and 
+contest program for hamradio. 
+
+It supports the CQWW, the WPX, the ARRL-DX , the ARRL-FD, the PACC and the 
+EU SPRINT contests (single operator) as well as a LOT MORE basic contests, 
+general QSO and DXpedition mode. 
+
+It interfaces with a morse code generator, your sound card, a number of radios,
+and with a DX Cluster. 
+
+=== Main Features of TLF ===
+
+    * Network based CW Keyer 6-60 wpm with 24 CW messages
+    * Integrated voice keyer (14 messages)
+    * AUTO-CQ
+    * Built-in <<supported_contests,contests>>
+    * Own contest definitions (with some limitations)
+    * DX-pedition and qso mode
+    * DXCC database
+    * Intelligent dupe checking
+    * Radio control via Hamlib library for many tranceivers
+    * MUF calculator
+
+    * IP networking for M/S or M/M operation
+    * Built-in telnet client and TNC terminal for cluster connection
+    * TRLog output compatible
+    * Cabrillo compatible
+
+Some more minor features
+
+    * Built-in cw practising simulator to learn tlf (cqww)
+    * On-line log file sync over the network
+    * Band info output on parallel port (top ten decoder compatible)
+    * RTTY contesting with gMFSK (soundcard program)
+    * Sound recorder facility to record voice keyer messages and complete contest.
+
+[[supported_contests]]
+.Supported Contests
+    * CQWW (SO, M/S and M/M)
+    * WPX (SO, M/S and M/M)
+    * ARRL Sweepstakes (SO, M/S )
+    * EU SPRINT
+    * EUHFC
+    * ARRL-DX (both sides)
+    * ARRL-FD
+    * Region1 field day
+    * SP DX contest
+    * PACC (both sides)
+    * NRAU - scandinavian
+    * Wysiwyg mults mode (per band or per contest)
+
+=== Development ===
+
+
+
+=== Old documentation ===
+
+* The old home of _TLF_ is at http://home.claranet.nl/users/reinc/TLF-0.2.html
+* You can find a copy of the original help page for TLF-0.9.9 
+link:tlfdoc.old/tlfdoc.html[here]
+
