@@ -1,30 +1,50 @@
-image::pics/TLFlogo.jpg["TLF logo",align="center"]
-== A console mode contest logger for hamradio under LINUX ==
+TLF - a ham radio contest logger
+===============================
+:no title:
 
-****
-_TLF_ was developed from 2001 on by Rein Couperous, PA0R. In last time 
-Thomas Beierlein, DL1JBE, took over. The program is published under the GPL.
-****
+== image:pics/TLFlogo1.jpg["TLF logo",align="center"]  a Linux based ham radio contest logger ==
 
-image::pics/snapshot5.png["TLF",align="center"]
+// ****
+// The development of _TLF_ was started in 2001 by Rein Couperous, PA0R. 
+// The program is published under the Gnu Public License (GPL).
+// ****
 
+.What is TLF?
 _TLF_ is a console (ncurses) mode general purpose CW/VOICE keyer, logging and 
-contest program for hamradio. 
+contest program for ham radio. 
 
 It supports the CQWW, the WPX, the ARRL-DX , the ARRL-FD, the PACC and the 
 EU SPRINT contests (single operator) as well as a LOT MORE basic contests, 
 general QSO and DXpedition mode. 
 
-It interfaces with a morse code generator, your sound card, a number of radios,
-and with a DX Cluster. 
+It interfaces with a the well known _cwdaemon_ morse code generator, your
+sound card, a number of radios via the _Hamlib_ library and with a DX
+Cluster. 
 
-=== Main Features of TLF ===
+// image::pics/snapshot5-thumbnail.png{"",link=...]
+image::pics/snapshot51.png["TLF",float="right"]
+
+
+.Table of Contents:
+
+   * <<main_features,Main Features>>
+   * <<download,Download and Installation>>
+   * <<getstarted,How to get started>>
+   * <<helping,Want to help making TLF better>>
+   * <<olddocu,Old documentation>>
+
+unfloat::[]
+
+'''
+
+[[main_features]]
+=== Main Features ===
 
     * Network based CW Keyer 6-60 wpm with 24 CW messages
     * Integrated voice keyer (14 messages)
     * AUTO-CQ
     * Built-in <<supported_contests,contests>>
-    * Own contest definitions (with some limitations)
+    * Own contest definitions (with some limitations) supported
     * DX-pedition and qso mode
     * DXCC database
     * Intelligent dupe checking
@@ -41,7 +61,7 @@ Some more minor features
     * Built-in cw practising simulator to learn tlf (cqww)
     * On-line log file sync over the network
     * Band info output on parallel port (top ten decoder compatible)
-    * RTTY contesting with gMFSK (soundcard program)
+    * RTTY contesting with gMFSK or fldigi (soundcard program)
     * Sound recorder facility to record voice keyer messages and complete contest.
 
 [[supported_contests]]
@@ -59,13 +79,92 @@ Some more minor features
     * NRAU - scandinavian
     * Wysiwyg mults mode (per band or per contest)
 
-=== Development ===
+[[download]]
+=== Download and Installation ===
+
+You can download the source code for the actual version (TLF-1.1.1)
+http://www.hs-mittweida.de/tb/tlf-1.1.1.tar.gz[here]. It must be compiled
+after unpacking (see below).
+
+.Quick install 
+
+Tlf uses automake and autoconf for building.
+Starting with TLF-1.0.0 you need pkg-config too.
+
+Easiest way to install tlf from source is by typing:
+
+----
+cd <packagedirectory>
+./configure
+make
+make install
+----
+
+If you want to compile the newest code from the git repo
+(http://www.github.com/Tlf/tlf), please run the
+following command just after download and unpack:
+
+----
+autoreconf --install
+----
 
 
+If you want to connect TLF to your radio, you need Hamlib support. Use the
+following command to enable it:
 
+----
+./configure --enable-hamlib
+----
+
+By default _tlf_ will be install into /usr/local/bin, together with the
+shell-scripts in the scripts directory. Data files will install into
+/usr/local/share/tlf.  If you want to change any of these paths, you can do
+this with configure too, e.g. 
+
+---- 
+./configure --prefix=/usr --datadir=/usr/share 
+---- 
+
+
+will installs tlf and scripts into /usr/bin and datafiles
+into /usr/share/tlf.
+
+
+[[getstarted]]
+=== How to get started ===
+
+* Read man page 
+* look into the help (the old one for now)
+* See doc/README, doc/README.ssb
+
+.Other ressources
+
+* There is a low volume mailing list for _tlf_ usage and development at 
+  tlf-devel@nongnu.org. Feel free to join in and ask your questions.
+  Furthermore you can browse the listarchive at 
+  http://lists.nongnu.org/mailman/listinfo/tlf-devel where you can find a lot of
+  useful informations.
+
+* You are also welcome on the wiki at http://tlf.wikispaces.com. (Any one can 
+  edit the pages, but it would be good to register as user at the site.)
+
+
+[[helping]]
+=== Want to help making TLF better ===
+
+* If you want to contribute clone the repo, make changes and send us a patch 
+  or pull request.
+
+----
+git clone git://github.com/Tlf/tlf.git
+----
+
+[[olddocu]]
 === Old documentation ===
 
 * The old home of _TLF_ is at http://home.claranet.nl/users/reinc/TLF-0.2.html
 * You can find a copy of the original help page for TLF-0.9.9 
 link:tlfdoc.old/tlfdoc.html[here]
+
+// vim: set syntax=asciidoc:
 

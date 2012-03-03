@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="AsciiDoc 8.5.3" />
-<title></title>
+<title>TLF - a ham radio contest logger</title>
 <style type="text/css">
 /* Debug borders */
 p, li, dt, dd, div, pre, h1, h2, h3, h4, h5, h6 {
@@ -553,31 +553,53 @@ footnotes: function () {
 <div id="header">
 </div>
 <div id="content">
-<div class="imageblock" style="text-align:center;">
-<div class="content">
-<img src="pics/TLFlogo.jpg" alt="TLF logo" />
-</div>
-</div>
-<h2 id="_a_console_mode_contest_logger_for_hamradio_under_linux">A console mode contest logger for hamradio under LINUX</h2>
+<h2 id="_span_class_image_img_src_pics_tlflogo1_jpg_alt_tlf_logo_span_a_linux_based_ham_radio_contest_logger"><span class="image">
+<img src="pics/TLFlogo1.jpg" alt="TLF logo" />
+</span>  a Linux based ham radio contest logger</h2>
 <div class="sectionbody">
-<div class="sidebarblock">
-<div class="sidebar-content">
-<div class="paragraph"><p><em>TLF</em> was developed from 2001 on by Rein Couperous, PA0R. In last time
-Thomas Beierlein, DL1JBE, took over. The program is published under the GPL.</p></div>
-</div></div>
-<div class="imageblock" style="text-align:center;">
-<div class="content">
-<img src="pics/snapshot5.png" alt="TLF" />
-</div>
-</div>
-<div class="paragraph"><p><em>TLF</em> is a console (ncurses) mode general purpose CW/VOICE keyer, logging and
-contest program for hamradio.</p></div>
+<div class="paragraph"><div class="title">What is TLF?</div><p><em>TLF</em> is a console (ncurses) mode general purpose CW/VOICE keyer, logging and
+contest program for ham radio.</p></div>
 <div class="paragraph"><p>It supports the CQWW, the WPX, the ARRL-DX , the ARRL-FD, the PACC and the
 EU SPRINT contests (single operator) as well as a LOT MORE basic contests,
 general QSO and DXpedition mode.</p></div>
-<div class="paragraph"><p>It interfaces with a morse code generator, your sound card, a number of radios,
-and with a DX Cluster.</p></div>
-<h3 id="_main_features_of_tlf">Main Features of TLF</h3><div style="clear:left"></div>
+<div class="paragraph"><p>It interfaces with a the well known <em>cwdaemon</em> morse code generator, your
+sound card, a number of radios via the <em>Hamlib</em> library and with a DX
+Cluster.</p></div>
+<div class="imageblock" style="float:right;">
+<div class="content">
+<img src="pics/snapshot51.png" alt="TLF" />
+</div>
+</div>
+<div class="ulist"><div class="title">Table of Contents:</div><ul>
+<li>
+<p>
+<a href="#main_features">Main Features</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#download">Download and Installation</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#getstarted">How to get started</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#helping">Want to help making TLF better</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#olddocu">Old documentation</a>
+</p>
+</li>
+</ul></div>
+<div style="clear:both;"></div>
+<hr />
+<h3 id="main_features">Main Features</h3><div style="clear:left"></div>
 <div class="ulist"><ul>
 <li>
 <p>
@@ -601,7 +623,7 @@ Built-in <a href="#supported_contests">contests</a>
 </li>
 <li>
 <p>
-Own contest definitions (with some limitations)
+Own contest definitions (with some limitations) supported
 </p>
 </li>
 <li>
@@ -669,7 +691,7 @@ Band info output on parallel port (top ten decoder compatible)
 </li>
 <li>
 <p>
-RTTY contesting with gMFSK (soundcard program)
+RTTY contesting with gMFSK or fldigi (soundcard program)
 </p>
 </li>
 <li>
@@ -740,8 +762,92 @@ Wysiwyg mults mode (per band or per contest)
 </p>
 </li>
 </ul></div>
-<h3 id="_development">Development</h3><div style="clear:left"></div>
-<h3 id="_old_documentation">Old documentation</h3><div style="clear:left"></div>
+<h3 id="download">Download and Installation</h3><div style="clear:left"></div>
+<div class="paragraph"><p>You can download the source code for the actual version (TLF-1.1.1)
+<a href="http://www.hs-mittweida.de/tb/tlf-1.1.1.tar.gz">here</a>. It must be compiled
+after unpacking (see below).</p></div>
+<div class="paragraph"><div class="title">Quick install</div><p>Tlf uses automake and autoconf for building.
+Starting with TLF-1.0.0 you need pkg-config too.</p></div>
+<div class="paragraph"><p>Easiest way to install tlf from source is by typing:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>cd &lt;packagedirectory&gt;
+./configure
+make
+make install</tt></pre>
+</div></div>
+<div class="paragraph"><p>If you want to compile the newest code from the git repo
+(<a href="http://www.github.com/Tlf/tlf">http://www.github.com/Tlf/tlf</a>), please run the
+following command just after download and unpack:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>autoreconf --install</tt></pre>
+</div></div>
+<div class="paragraph"><p>If you want to connect TLF to your radio, you need Hamlib support. Use the
+following command to enable it:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>./configure --enable-hamlib</tt></pre>
+</div></div>
+<div class="paragraph"><p>By default <em>tlf</em> will be install into /usr/local/bin, together with the
+shell-scripts in the scripts directory. Data files will install into
+/usr/local/share/tlf.  If you want to change any of these paths, you can do
+this with configure too, e.g.</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>./configure --prefix=/usr --datadir=/usr/share</tt></pre>
+</div></div>
+<div class="paragraph"><p>will installs tlf and scripts into /usr/bin and datafiles
+into /usr/share/tlf.</p></div>
+<h3 id="getstarted">How to get started</h3><div style="clear:left"></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Read man page
+</p>
+</li>
+<li>
+<p>
+look into the help (the old one for now)
+</p>
+</li>
+<li>
+<p>
+See doc/README, doc/README.ssb
+</p>
+</li>
+</ul></div>
+<div class="ulist"><div class="title">Other ressources</div><ul>
+<li>
+<p>
+There is a low volume mailing list for <em>tlf</em> usage and development at
+  <a href="mailto:tlf-devel@nongnu.org">tlf-devel@nongnu.org</a>. Feel free to join in and ask your questions.
+  Furthermore you can browse the listarchive at
+  <a href="http://lists.nongnu.org/mailman/listinfo/tlf-devel">http://lists.nongnu.org/mailman/listinfo/tlf-devel</a> where you can find a lot of
+  useful informations.
+</p>
+</li>
+<li>
+<p>
+You are also welcome on the wiki at <a href="http://tlf.wikispaces.com">http://tlf.wikispaces.com</a>. (Any one can
+  edit the pages, but it would be good to register as user at the site.)
+</p>
+</li>
+</ul></div>
+<h3 id="helping">Want to help making TLF better</h3><div style="clear:left"></div>
+<div class="ulist"><ul>
+<li>
+<p>
+If you want to contribute clone the repo, make changes and send us a patch
+  or pull request.
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>git clone git://github.com/Tlf/tlf.git</tt></pre>
+</div></div>
+<h3 id="olddocu">Old documentation</h3><div style="clear:left"></div>
 <div class="ulist"><ul>
 <li>
 <p>
@@ -760,7 +866,7 @@ You can find a copy of the original help page for TLF-0.9.9
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2011-10-08 22:21:06 CEST
+Last updated 2012-03-04 21:10:53 CEST
 </div>
 </div>
 </body>
