@@ -2,7 +2,7 @@ TLF - a ham radio contest logger
 ===============================
 :no title:
 
-== image:pics/TLFlogo1.jpg["TLF logo",align="center"]  a Linux based ham radio contest logger ==
+== image:pics/TLFlogo.jpg["TLF logo",align="center"]  a Linux based ham radio contest logger ==
 
 // ****
 // The development of _TLF_ was started in 2001 by Rein Couperous, PA0R. 
@@ -22,7 +22,7 @@ sound card, a number of radios via the _Hamlib_ library and with a DX
 Cluster. 
 
 // image::pics/snapshot5-thumbnail.png{"",link=...]
-image::pics/snapshot51.png["TLF",float="right"]
+image::pics/snapshot5.png["TLF",float="right"]
 
 
 .Table of Contents:
