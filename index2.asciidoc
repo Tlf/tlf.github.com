@@ -82,9 +82,9 @@ Some more minor features
 [[download]]
 === Download and Installation ===
 
-You can download the source code for the actual version (TLF-1.1.1)
-http://www.hs-mittweida.de/tb/tlf-1.1.1.tar.gz[here]. It must be compiled
-after unpacking (see below).
+You can download the source code for the actual version (TLF-1.1.2)
+https://github.com/downloads/Tlf/tlf/tlf-1.1.2.tar.gz[here]. 
+It must be compiled after unpacking (see below).
 
 .Quick install 
 
@@ -133,6 +133,9 @@ into /usr/share/tlf.
 [[getstarted]]
 === How to get started ===
 
+****
+.Work in progress...
+
 * Read man page 
 * look into the help (the old one for now)
 * See doc/README, doc/README.ssb
@@ -147,17 +150,22 @@ into /usr/share/tlf.
 
 * You are also welcome on the wiki at http://tlf.wikispaces.com. (Any one can 
   edit the pages, but it would be good to register as user at the site.)
-
+****
 
 [[helping]]
 === Want to help making TLF better ===
 
-* If you want to contribute clone the repo, make changes and send us a patch 
-  or pull request.
-
+* If you want to contribute to TLF's code development you can 
+** clone the repository, make changes and send us a patch or pull request.
++
 ----
 git clone git://github.com/Tlf/tlf.git
 ----
++
+** test the contest rules and multiplier files, suggest new contests or
+** review the documentation and provide corrections or additional information.
+
+
 
 [[olddocu]]
 === Old documentation ===
