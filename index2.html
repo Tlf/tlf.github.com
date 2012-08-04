@@ -719,14 +719,16 @@ asciidoc.install();
 <img src="pics/TLFlogo.jpg" alt="TLF logo" />
 </span>  a Linux based ham radio contest logger</h2>
 <div class="sectionbody">
-<div class="paragraph"><div class="title">What is TLF?</div><p><em>TLF</em> is a console (ncurses) mode general purpose CW/VOICE keyer, logging and
-contest program for ham radio.</p></div>
-<div class="paragraph"><p>It supports the CQWW, the WPX, the ARRL-DX , the ARRL-FD, the PACC and the
-EU SPRINT contests (single operator) as well as a LOT MORE basic contests,
-general QSO and DXpedition mode.</p></div>
-<div class="paragraph"><p>It interfaces with a the well known <em>cwdaemon</em> morse code generator, your
-sound card, a number of radios via the <em>Hamlib</em> library and with a DX
-Cluster.</p></div>
+<div class="paragraph"><p>This is the new home for the <em>TLF</em> project.  This project has been taken over
+from Rein Couperus, PA0R, in 2009 by Thomas Beierlein, DL1JBE, for maintenance and further development.</p></div>
+<div class="paragraph"><div class="title">What is TLF?</div><p><em>TLF</em> is a curses based console mode general logging and
+contest program for amateur radio.</p></div>
+<div class="paragraph"><p>It supports the CQWW, the WPX, the ARRL-DX, the ARRL-FD, the PACC and the
+EU SPRINT shortwave contests (single operator) as well as a LOT MORE basic
+contests, general QSO and DXpedition mode.</p></div>
+<div class="paragraph"><p>It interfaces with the <em>cwdaemon</em> morse code generator and your
+sound card for CW/VOICE keying, connects to a number of radios via
+the <em>Hamlib</em> library and has a built-in client for DX cluster connection.</p></div>
 <div class="imageblock" style="float:right;">
 <div class="content">
 <img src="pics/snapshot5.png" alt="TLF" />
@@ -949,20 +951,20 @@ following command just after download and unpack:</p></div>
 <pre><tt>autoreconf --install</tt></pre>
 </div></div>
 <div class="paragraph"><p>If you want to connect TLF to your radio, you need Hamlib support. Use the
-following command to enable it:</p></div>
+following command before the make above to enable it:</p></div>
 <div class="listingblock">
 <div class="content">
 <pre><tt>./configure --enable-hamlib</tt></pre>
 </div></div>
-<div class="paragraph"><p>By default <em>tlf</em> will be install into /usr/local/bin, together with the
-shell-scripts in the scripts directory. Data files will install into
-/usr/local/share/tlf.  If you want to change any of these paths, you can do
+<div class="paragraph"><p>By default <em>tlf</em> will be installed into <em>/usr/local/bin</em>, together with the
+shell-scripts in the scripts directory. Data files will be installed into
+<em>/usr/local/share/tlf</em>.  If you want to change any of these paths, you can do
 this with configure too, e.g.</p></div>
 <div class="listingblock">
 <div class="content">
 <pre><tt>./configure --prefix=/usr --datadir=/usr/share</tt></pre>
 </div></div>
-<div class="paragraph"><p>will installs tlf and scripts into /usr/bin and datafiles
+<div class="paragraph"><p>will install tlf and scripts into /usr/bin and datafiles
 into /usr/share/tlf.</p></div>
 </div>
 <div class="sect2">
@@ -991,7 +993,7 @@ See doc/README, doc/README.ssb
 <p>
 There is a low volume mailing list for <em>tlf</em> usage and development at
   <a href="mailto:tlf-devel@nongnu.org">tlf-devel@nongnu.org</a>. Feel free to join in and ask your questions.
-  Furthermore you can browse the listarchive at
+  Furthermore you can browse the list archive at
   <a href="http://lists.nongnu.org/mailman/listinfo/tlf-devel">http://lists.nongnu.org/mailman/listinfo/tlf-devel</a> where you can find a lot of
   useful informations.
 </p>
@@ -1010,12 +1012,12 @@ You are also welcome on the wiki at <a href="http://tlf.wikispaces.com">http://t
 <div class="ulist"><ul>
 <li>
 <p>
-If you want to contribute to TLF&#8217;s code development you can
+If you want to contribute to TLF&#8217;s development you can
 </p>
 <div class="ulist"><ul>
 <li>
 <p>
-clone the repository, make changes and send us a patch or pull request.
+clone the repository, make changes and send us patches or pull requests.
 </p>
 <div class="listingblock">
 <div class="content">
@@ -1035,6 +1037,7 @@ review the documentation and provide corrections or additional information.
 </ul></div>
 </li>
 </ul></div>
+<div class="paragraph"><p>All help is welcome.</p></div>
 </div>
 <div class="sect2">
 <h3 id="olddocu">Old documentation</h3>
@@ -1058,7 +1061,7 @@ You can find a copy of the original help page for TLF-0.9.9
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2012-04-18 21:32:59 CEST
+Last updated 2012-08-04 16:31:29 CEST
 </div>
 </div>
 </body>
