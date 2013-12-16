@@ -21,9 +21,9 @@ It supports the CQWW, the WPX, the ARRL-DX, the ARRL-FD, the PACC and the
 EU SPRINT shortwave contests (single operator) as well as a LOT MORE basic
 contests, general QSO and DXpedition mode. 
 
-It interfaces with the _cwdaemon_ morse code generator and your
-sound card for CW/VOICE keying, connects to a number of radios via 
-the _Hamlib_ library and has a built-in client for DX cluster connection. 
+It interfaces with _cwdaemon_ or _winkeyer daemon_ for morse code generation
+and with your sound card for CW/VOICE keying, connects to a number of radios
+via the _Hamlib_ library and has a built-in client for DX cluster connection. 
 
 // image::pics/snapshot5-thumbnail.png{"",link=...]
 image::pics/snapshot5.png["TLF",float="right"]
@@ -57,8 +57,8 @@ unfloat::[]
 
     * IP networking for M/S or M/M operation
     * Built-in telnet client and TNC terminal for cluster connection
-    * TRLog output compatible
-    * Cabrillo compatible
+    * nearly TRLog output compatible
+    * configurable Cabrillo output
 
 Some more minor features
 
@@ -66,7 +66,8 @@ Some more minor features
     * On-line log file sync over the network
     * Band info output on parallel port (top ten decoder compatible)
     * RTTY contesting with gMFSK or fldigi (soundcard program)
-    * Sound recorder facility to record voice keyer messages and complete contest.
+    * Sound recorder facility to record voice keyer messages and 
+    complete contest.
 
 [[supported_contests]]
 .Supported Contests
@@ -77,6 +78,7 @@ Some more minor features
     * EUHFC
     * ARRL-DX (both sides)
     * ARRL-FD
+    * ARRL 10m
     * Region1 field day
     * SP DX contest
     * PACC (both sides)
@@ -86,8 +88,8 @@ Some more minor features
 [[download]]
 === Download and Installation ===
 
-You can download the source code for the actual version (TLF-1.1.2)
-https://github.com/downloads/Tlf/tlf/tlf-1.1.2.tar.gz[here]. 
+You can download the source code for the last packaged version (TLF-1.2.0pre3)
+http://www.hs-mittweida.de/tb/tlf-1.2.0_pre3.tar.gz[here]. 
 It must be compiled after unpacking (see below).
 
 .Quick install 
@@ -142,7 +144,7 @@ into /usr/share/tlf.
 
 * Read man page 
 * look into the help (the old one for now)
-* See doc/README, doc/README.ssb
+* See doc/README, doc/README.ssb, ...
 
 .Other ressources
 
@@ -160,7 +162,7 @@ into /usr/share/tlf.
 === Want to help making TLF better ===
 
 * If you want to contribute to TLF's development you can 
-** clone the repository, make changes and send us patches or pull requests.
+** clone the repository, make changes and send patches or pull requests.
 +
 ----
 git clone git://github.com/Tlf/tlf.git
@@ -178,7 +180,7 @@ All help is welcome.
 
 * The old home of _TLF_ is at http://home.claranet.nl/users/reinc/TLF-0.2.html
 * You can find a copy of the original help page for TLF-0.9.9 
-link:tlfdoc.old/tlfdoc.html[here]
+link:tlfdoc.old/tlfdoc.html[here]. A new help page has still  to be written.
 
 // vim: set syntax=asciidoc:
 
