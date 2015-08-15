@@ -88,8 +88,8 @@ Some more minor features
 [[download]]
 === Download and Installation ===
 
-You can download the source code for the last packaged version (TLF-1.2.0pre3)
-http://www.hs-mittweida.de/tb/tlf-1.2.0_pre3.tar.gz[here]. 
+You can download the source code for the last packaged version (TLF-1.2.2_pre1)
+http://www.hs-mittweida.de/tb/tlf-1.2.2_pre1.tar.gz[here]. 
 It must be compiled after unpacking (see below).
 
 .Quick install 
@@ -134,6 +134,14 @@ this with configure too, e.g.
 
 will install tlf and scripts into /usr/bin and datafiles
 into /usr/share/tlf.
+
+If you are doing a lot of contesting in digimodes using Fldigi there is support
+for reading the audio frequency via xmlrpc. Make sure to install XMLRPC-c and 
+configure tlf with
+
+---- 
+./configure --enable-fldigi-xmlrpc
+---- 
 
 
 [[getstarted]]
