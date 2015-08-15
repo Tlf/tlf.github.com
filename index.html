@@ -957,8 +957,8 @@ Wysiwyg mults mode (per band or per contest)
 </div>
 <div class="sect2">
 <h3 id="download">Download and Installation</h3>
-<div class="paragraph"><p>You can download the source code for the last packaged version (TLF-1.2.1)
-<a href="http://www.hs-mittweida.de/tb/tlf-1.2.1.tar.gz">here</a>.
+<div class="paragraph"><p>You can download the source code for the last packaged version (TLF-1.2.2_pre1)
+<a href="http://www.hs-mittweida.de/tb/tlf-1.2.2_pre1.tar.gz">here</a>.
 It must be compiled after unpacking (see below).</p></div>
 <div class="paragraph"><div class="title">Quick install</div><p>Tlf uses automake and autoconf for building.
 Starting with TLF-1.0.0 you need pkg-config too.</p></div>
@@ -993,6 +993,13 @@ this with configure too, e.g.</p></div>
 </div></div>
 <div class="paragraph"><p>will install tlf and scripts into /usr/bin and datafiles
 into /usr/share/tlf.</p></div>
+<div class="paragraph"><p>If you are doing a lot of contesting in digimodes using Fldigi there is support
+for reading the audio frequency via xmlrpc. Make sure to install XMLRPC-c and
+configure tlf with</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>./configure --enable-fldigi-xmlrpc</code></pre>
+</div></div>
 </div>
 <div class="sect2">
 <h3 id="getstarted">How to get started</h3>
@@ -1088,7 +1095,7 @@ You can find a copy of the original help page for TLF-0.9.9
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-02-18 17:33:41 CET
+Last updated 2015-08-15 14:26:42 CEST
 </div>
 </div>
 </body>
