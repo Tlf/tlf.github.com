@@ -162,8 +162,6 @@ configure tlf with
   http://lists.nongnu.org/mailman/listinfo/tlf-devel where you can find a lot of
   useful informations.
 
-* You are also welcome on the wiki at http://tlf.wikispaces.com. (Any one can 
-  edit the pages, but it would be good to register as user at the site.)
 ****
 
 [[helping]]
