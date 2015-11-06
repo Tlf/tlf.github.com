@@ -84,12 +84,13 @@ Some more minor features
     * PACC (both sides)
     * NRAU - scandinavian
     * Wysiwyg mults mode (per band or per contest)
+    * WAEDX (New in tlf-1.2.2 See doc/README_QTC.txt)
 
 [[download]]
 === Download and Installation ===
 
-You can download the source code for the last packaged version (TLF-1.2.2_pre2)
-http://www.hs-mittweida.de/tb/tlf-1.2.2_pre2.tar.gz[here]. 
+You can download the source code for the last packaged version (TLF-1.2.2)
+http://www.hs-mittweida.de/tb/tlf-1.2.2.tar.gz[here]. 
 It must be compiled after unpacking (see below).
 
 .Quick install 
