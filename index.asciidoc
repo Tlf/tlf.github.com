@@ -90,8 +90,8 @@ Some more minor features
 [[download]]
 === Download and Installation ===
 
-You can download the source code for the last packaged version (TLF-1.2.4.3)
-http://www.hs-mittweida.de/tb/tlf-1.2.4.3.tar.gz[here]. 
+You can download the source code for the last packaged version (TLF-1.2.4.5)
+http://www.hs-mittweida.de/tb/tlf-1.2.4.5.tar.gz[here]. 
 It must be compiled after unpacking (see below).
 
 .Quick install 
