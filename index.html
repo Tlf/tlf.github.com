@@ -863,7 +863,7 @@ configurable Cabrillo output
 <div class="ulist"><ul>
 <li>
 <p>
-Built-in CW practising simulator to learn tlf (cqww)
+Built-in CW practising simulator to learn TLF (cqww)
 </p>
 </li>
 <li>
@@ -961,7 +961,7 @@ Wysiwyg mults mode (per band or per contest)
 </li>
 <li>
 <p>
-WAEDX (New in tlf-1.2.2 See doc/README_QTC.txt)
+WAEDX (New in TLF-1.2.2 See doc/README_QTC.txt)
 </p>
 </li>
 </ul></div>
@@ -970,10 +970,55 @@ WAEDX (New in tlf-1.2.2 See doc/README_QTC.txt)
 <h3 id="download">Download and Installation</h3>
 <div class="paragraph"><p>You can download the source code for the last packaged version (TLF-1.3.1)
 <a href="http://www.hs-mittweida.de/tb/tlf-1.3.1.tar.gz">here</a>.
-It must be compiled after unpacking (see below).</p></div>
-<div class="paragraph"><div class="title">Quick install</div><p>Tlf uses automake and autoconf for building.
+It must be compiled after unpacking (see below). You will need some other
+packages for building TLF.</p></div>
+<div class="paragraph"><div class="title">Build Dependencies</div><p>Building TLF requires some other components to be installed before.
+It depends on</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+the <em>Hamlib</em> library for controlling your radio,
+</p>
+</li>
+<li>
+<p>
+<em>ncurses</em> and <em>tinfo</em> for text screen handling,
+</p>
+</li>
+<li>
+<p>
+the <em>XMLRPC_C</em> library for communication with programs like <em>FlDigi</em> and
+</p>
+</li>
+<li>
+<p>
+<em>Glib-2.0</em> for supporting C functions.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>If you are using a distribution of the <em>Debian</em> family make sure to install
+also the needed header files with</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>sudo apt install libglib2.0-dev libhamlib-dev libncurses5-dev libtinfo-dev libxmlrpc-core-c3</code></pre>
+</div></div>
+<div class="paragraph"><p>While not a strict build dependency installing the following packages is
+helpful too:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<em>sox</em> for audio signal handling during SSB contests and
+</p>
+</li>
+<li>
+<p>
+<em>xplanet</em> which allows you to see the latest DX spots on the globe.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><div class="title">Quick install</div><p>TLF uses automake and autoconf for building.
 Starting with TLF-1.0.0 you need pkg-config too.</p></div>
-<div class="paragraph"><p>Easiest way to install tlf from source is by typing:</p></div>
+<div class="paragraph"><p>The easiest way to install TLF from packaged source is by typing:</p></div>
 <div class="listingblock">
 <div class="content">
 <pre><code>cd &lt;packagedirectory&gt;
@@ -994,7 +1039,7 @@ following command before the make above to enable it:</p></div>
 <div class="content">
 <pre><code>./configure --enable-hamlib</code></pre>
 </div></div>
-<div class="paragraph"><p>By default <em>tlf</em> will be installed into <em>/usr/local/bin</em>, together with the
+<div class="paragraph"><p>By default <em>TLF</em> will be installed into <em>/usr/local/bin</em>, together with the
 shell-scripts in the scripts directory. Data files will be installed into
 <em>/usr/local/share/tlf</em>.  If you want to change any of these paths, you can do
 this with configure too, e.g.</p></div>
@@ -1002,11 +1047,11 @@ this with configure too, e.g.</p></div>
 <div class="content">
 <pre><code>./configure --prefix=/usr --datadir=/usr/share</code></pre>
 </div></div>
-<div class="paragraph"><p>will install tlf and scripts into /usr/bin and datafiles
+<div class="paragraph"><p>will install TLF and scripts into /usr/bin and datafiles
 into /usr/share/tlf.</p></div>
 <div class="paragraph"><p>If you are doing a lot of contesting in digimodes using Fldigi there is support
 for reading the audio frequency via xmlrpc. Make sure to install XMLRPC-c and
-configure tlf with</p></div>
+configure TLF with</p></div>
 <div class="listingblock">
 <div class="content">
 <pre><code>./configure --enable-fldigi-xmlrpc</code></pre>
@@ -1036,7 +1081,7 @@ See doc/README, doc/README.ssb, &#8230;
 <div class="ulist"><div class="title">Other ressources</div><ul>
 <li>
 <p>
-There is a low volume mailing list for <em>tlf</em> usage and development at
+There is a low volume mailing list for <em>TLF</em> usage and development at
   <a href="mailto:tlf-devel@nongnu.org">tlf-devel@nongnu.org</a>. Feel free to join in and ask your questions.
   Furthermore you can browse the list archive at
   <a href="http://lists.nongnu.org/mailman/listinfo/tlf-devel">http://lists.nongnu.org/mailman/listinfo/tlf-devel</a> where you can find a lot of
@@ -1101,7 +1146,7 @@ You can find a copy of the original help page for TLF-0.9.9
 <div id="footer">
 <div id="footer-text">
 Last updated
- 2018-10-14 19:02:48 CEST
+ 2018-10-16 17:50:27 CEST
 </div>
 </div>
 </body>
