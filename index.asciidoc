@@ -179,6 +179,7 @@ configure TLF with
 * Read man page 
 * look into the help (the old one for now)
 * See doc/README, doc/README.ssb, ...
+* Read the https://raw.githubusercontent.com/Tlf/tlf/master/doc/FAQ[FAQ]
 
 .Other ressources
 
