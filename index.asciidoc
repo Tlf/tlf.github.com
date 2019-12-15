@@ -141,13 +141,6 @@ autoreconf --install
 ----
 
 
-If you want to connect TLF to your radio, you need Hamlib support. Use the
-following command before the make above to enable it:
-
-----
-./configure --enable-hamlib
-----
-
 By default _TLF_ will be installed into _/usr/local/bin_, together with the
 shell-scripts in the scripts directory. Data files will be installed into
 _/usr/local/share/tlf_.  If you want to change any of these paths, you can do
