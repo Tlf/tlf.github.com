@@ -102,14 +102,15 @@ It depends on
 
  * the _Hamlib_ library for controlling your radio,
  * _ncurses_ and _tinfo_ for text screen handling,
- * the _XMLRPC_C_ library for communication with programs like _FlDigi_ and
- * _Glib-2.0_ for supporting C functions.
+ * the _XMLRPC_C_ library for communication with programs like _FlDigi_,
+ * _Glib-2.0_ for supporting C functions and
+ * _GNU Autoconf_ for configuring and building the code.
 
 If you are using a distribution of the _Debian_ family make sure to install
 also the needed header files with
 
 ----
-sudo apt install libglib2.0-dev libhamlib-dev libncurses5-dev libtinfo-dev libxmlrpc-core-c3-dev
+sudo apt install autoconf libglib2.0-dev libhamlib-dev libncurses5-dev libtinfo-dev libxmlrpc-core-c3-dev
 ----
 
 While not a strict build dependency installing the following packages is
