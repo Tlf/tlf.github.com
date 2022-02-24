@@ -17,13 +17,12 @@ from Rein Couperus, PA0R, in 2009 by Thomas Beierlein, DL1JBE, for maintenance a
 _TLF_ is a curses based console mode general logging and 
 contest program for amateur radio. 
 
-It supports the CQWW, the WPX, the ARRL-DX, the ARRL-FD, the PACC and the
-EU SPRINT shortwave contests (single operator) as well as a LOT MORE basic
-contests, general QSO and DXpedition mode. 
+It supports numerous contests, including CQWW, WPX, ARRL-DX, ARRL-FD, PACC and the
+EU SPRINT shortwave contests, and also has general QSO and DXpedition modes. 
 
 It interfaces with _cwdaemon_ or _winkeyer daemon_ for morse code generation
-and with your sound card for CW/VOICE keying, connects to a number of radios
-via the _Hamlib_ library and has a built-in client for DX cluster connection. 
+and with your sound card for CW/voice keying, connects to many radios
+via the _hamlib_ library, and has a built-in client for DX cluster connection. 
 
 // image::pics/snapshot5-thumbnail.png{"",link=...]
 image::pics/snapshot5.png["TLF",float="right"]
@@ -46,26 +45,25 @@ unfloat::[]
 
     * Network based CW Keyer 6-60 wpm with 24 CW messages
     * Integrated voice keyer (14 messages)
-    * AUTO-CQ
+    * Auto-CQ
     * Built-in <<supported_contests,contests>>
-    * Own contest definitions (with some limitations) supported
-    * DX-pedition and QSO mode
+    * User-defined contests for those not yet included
+    * DX-pedition and QSO modes
     * DXCC database
     * Intelligent dupe checking
-    * Radio control via Hamlib library for many tranceivers
+    * Radio control via the hamlib library for many transceivers
     * MUF calculator
-
     * IP networking for M/S or M/M operation
     * Built-in telnet client and TNC terminal for cluster connection
-    * nearly TRLog output compatible
-    * configurable Cabrillo output
+    * Nearly TRLog output compatible
+    * Configurable Cabrillo output
 
 Some more minor features
 
-    * Built-in CW practising simulator to learn TLF (cqww)
+    * Built-in CW practice simulator to learn TLF (simulated CQWW running)
     * On-line log file sync over the network
     * Band info output on parallel port (top ten decoder compatible)
-    * RTTY contesting with gMFSK or fldigi (soundcard program)
+    * RTTY contesting with gMFSK or Fldigi (soundcard programs)
     * Sound recorder facility to record voice keyer messages and 
     complete contest.
 
@@ -92,122 +90,7 @@ Some more minor features
 
 You can download the source code for the last packaged version (TLF-1.4.1)
 http://download.savannah.gnu.org/releases/tlf/tlf-1.4.1.tar.gz[here].
-It must be compiled after unpacking (see below). You will need some further 
-packages for building TLF.
-
-.Build Dependencies
-
-Building TLF requires some other components to be installed before. 
-It depends on
-
- * the _Hamlib_ library for controlling your radio,
- * _ncurses_ and _tinfo_ for text screen handling,
- * the _XMLRPC_C_ library for communication with programs like _FlDigi_,
- * _Glib-2.0_ for supporting C functions and
- * _GNU Autoconf_ for configuring and building the code.
-
-If you are using a distribution of the _Debian_ family make sure to install
-also the needed header files with
-
-----
-sudo apt install autoconf libglib2.0-dev libhamlib-dev libncurses5-dev libtinfo-dev libxmlrpc-core-c3-dev
-----
-
-While not a strict build dependency installing the following packages is
-helpful too:
-
- * _sox_ for audio signal handling during SSB contests and
- * _xplanet_ which allows you to see the latest DX spots on the globe.
-
-.Quick install 
-
-TLF uses automake and autoconf for building.
-Starting with TLF-1.0.0 you need pkg-config too.
-
-The easiest way to install TLF from packaged source is by typing:
-
-----
-cd <packagedirectory>
-./configure
-make
-make install
-----
-
-If you want to compile the newest code from the git repo
-(http://www.github.com/Tlf/tlf), please run the
-following command just after download and unpack:
-
-----
-autoreconf --install
-----
-
-
-By default _TLF_ will be installed into _/usr/local/bin_, together with the
-shell-scripts in the scripts directory. Data files will be installed into
-_/usr/local/share/tlf_.  If you want to change any of these paths, you can do
-this with configure too, e.g. 
-
----- 
-./configure --prefix=/usr --datadir=/usr/share 
----- 
-
-
-will install TLF and scripts into /usr/bin and datafiles
-into /usr/share/tlf.
-
-If you are doing a lot of contesting in digimodes using Fldigi there is support
-for reading the audio frequency via xmlrpc. Make sure to install XMLRPC-c and 
-configure TLF with
-
----- 
-./configure --enable-fldigi-xmlrpc
----- 
-
-
-[[getstarted]]
-=== How to get started ===
-
-****
-.Work in progress...
-
-* Read man page 
-* look into the help (the old one for now)
-* See doc/README, doc/README.ssb, ...
-* Read the https://raw.githubusercontent.com/Tlf/tlf/master/doc/FAQ[FAQ]
-
-.Other ressources
-
-* There is a low volume mailing list for _TLF_ usage and development at 
-  tlf-devel@nongnu.org. Feel free to join in and ask your questions.
-  Furthermore you can browse the list archive at 
-  http://lists.nongnu.org/mailman/listinfo/tlf-devel where you can find a lot of
-  useful informations.
-
-****
-
-[[helping]]
-=== Want to help making TLF better ===
-
-* If you want to contribute to TLF's development you can 
-** clone the repository, make changes and send patches or pull requests.
-+
-----
-git clone git://github.com/Tlf/tlf.git
-----
-+
-** test the contest rules and multiplier files, suggest new contests or
-** review the documentation and provide corrections or additional information.
-
-All help is welcome.
-
-
-
-[[olddocu]]
-=== Old documentation ===
-
-* The old home of _TLF_ is at http://home.claranet.nl/users/reinc/TLF-0.2.html
-* You can find a copy of the original help page for TLF-0.9.9 
-link:tlfdoc.old/tlfdoc.html[here]. A new help page has still  to be written.
+It must be compiled after unpacking, and has some dependencies that must be installed first. See the README.md in the https://github.com/Tlf/tlf[main repository] for details.
 
 // vim: set syntax=asciidoc:
 
