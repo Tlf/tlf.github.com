@@ -27,17 +27,6 @@ via the _hamlib_ library, and has a built-in client for DX cluster connection.
 // image::pics/snapshot5-thumbnail.png{"",link=...]
 image::pics/snapshot5.png["TLF",float="right"]
 
-
-.Table of Contents:
-
-   * <<main_features,Main Features>>
-   * <<download,Download and Installation>>
-   * <<getstarted,How to get started>>
-   * <<helping,Want to help making TLF better>>
-   * <<olddocu,Old documentation>>
-
-unfloat::[]
-
 '''
 
 [[main_features]]
